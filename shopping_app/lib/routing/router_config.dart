@@ -15,7 +15,7 @@ GoRouter _buildRouter() {
     routes: [
       GoRoute(
         path: Routes.splashScreen,
-        builder: (context, state) => LoginScreen(),
+        builder: (context, state) => SplashScreen(),
       ),
       GoRoute(
         path: Routes.login,

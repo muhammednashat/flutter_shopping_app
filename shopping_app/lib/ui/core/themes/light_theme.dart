@@ -3,18 +3,6 @@ import 'package:flutter/rendering.dart';
 import 'package:shopping_app/ui/core/colors/light_color.dart';
 
 
-/**
- * display* → Big, bold titles (e.g., app title)
-
-headline* → Section titles
-
-title* → Smaller titles or subtitles
-
-body* → Main content text
-
-label* → Buttons, captions, tags
- */
-
 
 final lightTheme = _buildLightTheme();
 
@@ -24,6 +12,7 @@ ThemeData _buildLightTheme() {
     scaffoldBackgroundColor: backgroundColor,
      
     appBarTheme: AppBarTheme(
+      
       centerTitle: true,
       backgroundColor: Colors.white,
       foregroundColor: blackColor,
@@ -38,28 +27,30 @@ ThemeData _buildLightTheme() {
       ),
     ),
 
+     inputDecorationTheme: InputDecorationTheme(
+      fillColor: Colors.white,
+      filled: true,
+      border: InputBorder.none,
 
+     ),
     
     textTheme: TextTheme(
-      displayLarge: TextStyle(fontSize: 57, fontWeight: FontWeight.normal, color: blackColor),
-      displayMedium: TextStyle(fontSize: 45, fontWeight: FontWeight.normal, color: blackColor),
-      displaySmall: TextStyle(fontSize: 36, fontWeight: FontWeight.normal, color: blackColor),
 
-      headlineLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.normal, color: blackColor),
-      headlineMedium: TextStyle(fontSize: 28, fontWeight: FontWeight.normal, color: blackColor),
-      headlineSmall: TextStyle(fontSize: 24, fontWeight: FontWeight.normal, color: blackColor),
+//display* → Big, bold titles (e.g., app title)
 
-      titleLarge: TextStyle(fontSize: 22, fontWeight: FontWeight.w500, color: blackColor),
+//headline* → Section titles
+      headlineLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: blackColor),
+
+//title* → Smaller titles or subtitles
       titleMedium: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: blackColor),
       titleSmall: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: blackColor),
 
+//body* → Main content text
       bodyLarge: TextStyle(fontSize: 16, fontWeight: FontWeight.normal, color: blackColor),
       bodyMedium: TextStyle(fontSize: 14, fontWeight: FontWeight.normal, color: blackColor),
-      bodySmall: TextStyle(fontSize: 12, fontWeight: FontWeight.normal, color: blackColor),
 
+//label* → Buttons, captions, tags
       labelLarge: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: blackColor),
-      labelMedium: TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color: blackColor),
-      labelSmall: TextStyle(fontSize: 11, fontWeight: FontWeight.w500, color: blackColor),
     ),
   );
 }
