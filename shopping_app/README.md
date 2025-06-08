@@ -1,3 +1,0 @@
-# shopping_app
-
-
