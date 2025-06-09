@@ -11,6 +11,8 @@ import 'package:shopping_app/ui/core/ui/custom_button.dart';
 import 'package:shopping_app/ui/core/ui/custom_text_form_field.dart';
 import 'package:http/http.dart' as http;
 import 'package:dio/dio.dart';
+import 'package:shopping_app/utils/result.dart';
+import 'package:shopping_app/utils/util.dart';
 
 class SignupScreen extends ConsumerWidget {
   SignupScreen({super.key});
@@ -53,13 +55,13 @@ class SignupScreen extends ConsumerWidget {
                       ),
                       SizedBox(height: 4),
                       CustomTextFormField(
-                        validator: _emailValidation,
+                        validator: emailValidation,
                         label: 'Email',
                         controller: _controllers[1],
                       ),
                       SizedBox(height: 4),
                       CustomTextFormField(
-                        validator: _passwordValidation,
+                        validator: passwordValidation,
                         label: 'Password',
                         controller: _controllers[2],
                       ),
@@ -68,7 +70,7 @@ class SignupScreen extends ConsumerWidget {
                         text: 'SIGN UP',
                         onPressed: () {
                           if (_isValidate()) {
-                            _onpressed();
+                            _onpressed(context);
                             // print(  authRepo.register());
                           }
                         },
@@ -103,41 +105,30 @@ class SignupScreen extends ConsumerWidget {
     );
   }
 
-  String? _emailValidation(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'email is required';
-    }
-    var regExp = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
-    if (!regExp.hasMatch(value)) {
-      return 'This email is not valid';
-    }
-    return null;
-  }
 
-  String? _passwordValidation(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'password is required';
-    }
-    if (value.length < 8) {
-      return 'password must be grater then 8 chars';
-    }
-    return null;
-  }
 
-  // _isValidate() => (_formKey.currentState?.validate());
-  _isValidate() => true;
+  _isValidate() => (_formKey.currentState?.validate());
 
-  void _onpressed() {
+  void _onpressed(BuildContext context) {
     final name = _controllers[0].text;
     final email = _controllers[1].text;
     final password = _controllers[2].text;
 
-    request(email, password,name);
+    request(context,email, password,name);
   }
 
-  void request(String email, String password, String name) async {
+  void request(BuildContext context,String email, String password, String name) async {
     print('----------------------------------------------------');
     final result = await  authRepo.register(email,password,name);
+  switch (result) {
+  case Ok(): {
+     print(result.value);
+     context.go(Routes.home);
+   }
+   case Error(): {
+    print(result.error);
+   }
+ }
     print(result);
     // print(response.data);
     print('----------------------------------------------------');

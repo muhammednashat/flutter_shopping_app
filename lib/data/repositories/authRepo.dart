@@ -6,8 +6,9 @@ class AuthRepo {
 
   AuthRepo({required this.service});
 
-  login(String email, String password) {}
+  Future<Result<String>> login(String email, String password) =>
+      service.login(email, password);
 
- Future<Result<String>> register(String email, String password, String name) =>
+  Future<Result<String>> register(String email, String password, String name) =>
       service.register(email, password, name);
 }
