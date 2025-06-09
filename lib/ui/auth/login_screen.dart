@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:shopping_app/providers/auth_provider.dart';
+import 'package:shopping_app/providers/dependences.dart';
 import 'package:shopping_app/routing/routes.dart';
 import 'package:shopping_app/ui/core/colors/light_color.dart';
 import 'package:shopping_app/ui/core/ui/custom_app_bar.dart';
@@ -93,7 +93,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
  _loginIn(BuildContext context, String email, String password)async{
 
   print('----------------------------------------------------');
-    final result = await  ref.read(authRepoProvider).login(email,password);
+    final repo = await  ref.read(authRepoProvider.future);
+    final result = await  repo.login(email,password);
   switch (result) {
   case Ok(): {
      print(result.value);
