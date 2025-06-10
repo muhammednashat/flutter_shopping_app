@@ -81,12 +81,14 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     );
   }
 
- _isValidate() => (_formKey.currentState?.validate());
+//  _isValidate() => (_formKey.currentState?.validate());
+ _isValidate() => true;
 
   void _onpressed(BuildContext context) {
-    final email = _controllers[0].text;
-    final password = _controllers[1].text;
-
+    // final email = _controllers[0].text;
+    // final password = _controllers[1].text;
+    final email = 'a@gmail.com';
+    final password = '12345678';
     _loginIn(context,email, password);
   }
 

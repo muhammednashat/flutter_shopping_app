@@ -14,13 +14,12 @@ class Authservice {
       );
   }
 
-  Future<Result<String>> register(
+  Future<Response<dynamic>> register(
     String email,
     String password,
     String name,
   ) async {
-    try {
-      final response = await dio.post(
+    return await dio.post(
         'http://192.168.1.5:3000/api/v1/register',
         data: {
           'email': email,
@@ -31,10 +30,6 @@ class Authservice {
         },
       );
 
-      return Result.ok("ok");
-    } on Exception catch (e) {
-      print(e);
-      return Result.error(e);
-    }
+    
   }
 }

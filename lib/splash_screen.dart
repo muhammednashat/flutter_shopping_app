@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shopping_app/providers/dependences.dart';
 import 'package:shopping_app/routing/routes.dart';
 import 'package:shopping_app/ui/core/colors/light_color.dart';
 import 'package:shopping_app/ui/core/ui/custom_button.dart';
 
-class SplashScreen extends StatefulWidget {
+class SplashScreen extends ConsumerStatefulWidget {
   const SplashScreen({super.key});
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  ConsumerState<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashScreenState extends ConsumerState<SplashScreen> {
   
   @override
   void initState() {
     navigateBasedState();
-    // TODO: implement initState
     super.initState();
   }
   @override
@@ -33,8 +34,21 @@ class _SplashScreenState extends State<SplashScreen> {
   }
   
   void navigateBasedState() async{
+    final boxCollection  = await ref.read(boxCollectionProvider.future);
+    final appData = await boxCollection.openBox('appData');
+    final isLogged = await appData.get('isLogged');
+    print(isLogged);
     await Future.delayed(Durations.medium3);
+    print('delayed');
+    if (isLogged) {
+      print('home');
+    context.go(Routes.home);
+      
+    } else {
+      print('singUp');
     context.go(Routes.signup);
+      
+    }
   }
 }
 

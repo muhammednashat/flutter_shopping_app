@@ -111,12 +111,19 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
     );
   }
 
-  _isValidate() => (_formKey.currentState?.validate());
+  // _isValidate() => (_formKey.currentState?.validate());
+
+  _isValidate() => true;
+
 
   void _onpressed(BuildContext context) {
-    final name = _controllers[0].text;
-    final email = _controllers[1].text;
-    final password = _controllers[2].text;
+    // final name = _controllers[0].text;
+    // final email = _controllers[1].text;
+    // final password = _controllers[2].text;
+
+  final name = 'namw';
+    final email = 'asf@gmail.com';
+    final password = '123456789';
 
     request(context, email, password, name);
   }
