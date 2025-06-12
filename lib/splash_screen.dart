@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:shopping_app/providers/dependences.dart';
+import 'package:shopping_app/config/dependences.dart';
 import 'package:shopping_app/routing/routes.dart';
-import 'package:shopping_app/ui/core/colors/light_color.dart';
 import 'package:shopping_app/ui/core/ui/custom_button.dart';
 
 class SplashScreen extends ConsumerStatefulWidget {
@@ -24,10 +23,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('data'),),
-
-
       body: Center(
-
         child: CustomElevatedButton(text: 'text', onPressed: (){}),
       ),
     );
@@ -42,7 +38,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
     print('delayed');
     if (isLogged) {
       print('home');
-    context.go(Routes.home);
+    context.go(Routes.mainScreen);
       
     } else {
       print('singUp');

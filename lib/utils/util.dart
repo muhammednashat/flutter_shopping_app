@@ -10,6 +10,9 @@
     return null;
   }
 
+String getImagePath(String image){
+  return 'lib/config/assets/images/$image';
+}
   String? passwordValidation(String? value) {
     if (value == null || value.isEmpty) {
       return 'password is required';

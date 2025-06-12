@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:hive/hive.dart';
 import 'package:shopping_app/data/model/user.dart';
 import 'package:shopping_app/data/services/api/authService.dart';

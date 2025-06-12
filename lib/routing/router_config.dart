@@ -6,7 +6,7 @@ import 'package:shopping_app/splash_screen.dart';
 import 'package:shopping_app/ui/auth/forgot_password_screen.dart';
 import 'package:shopping_app/ui/auth/login_screen.dart';
 import 'package:shopping_app/ui/auth/signup_screen.dart';
-import 'package:shopping_app/ui/home/home_screen.dart';
+import 'package:shopping_app/ui/main_screen.dart';
 final routerConfig =  _buildRouter();
 
 
@@ -30,8 +30,8 @@ GoRouter _buildRouter() {
         builder: (context, state) => ForgotPasswordScreen(),
       ),
       GoRoute(
-        path: Routes.home,
-        builder: (context, state) => HomeScreen(),
+        path: Routes.mainScreen,
+        builder: (context, state) => MainScreen(),
       ),
     ],
   );

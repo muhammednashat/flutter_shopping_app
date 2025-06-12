@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:shopping_app/ui/core/colors/light_color.dart';
 import 'package:shopping_app/ui/core/ui/custom_app_bar.dart';
 import 'package:shopping_app/ui/core/ui/custom_button.dart';
 import 'package:shopping_app/ui/core/ui/custom_text_form_field.dart';

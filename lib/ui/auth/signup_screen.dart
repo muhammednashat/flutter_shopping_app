@@ -1,16 +1,12 @@
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:shopping_app/data/repositories/authRepo.dart';
-import 'package:shopping_app/providers/dependences.dart';
+import 'package:shopping_app/config/dependences.dart';
 import 'package:shopping_app/routing/routes.dart';
 import 'package:shopping_app/ui/core/ui/custom_app_bar.dart';
 import 'package:shopping_app/ui/core/ui/custom_button.dart';
 import 'package:shopping_app/ui/core/ui/custom_text_form_field.dart';
-import 'package:http/http.dart' as http;
-import 'package:dio/dio.dart';
 import 'package:shopping_app/utils/result.dart';
 import 'package:shopping_app/utils/util.dart';
 
@@ -137,7 +133,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
       case Ok():
         {
           print(result.value);
-          context.go(Routes.home);
+          context.go(Routes.mainScreen);
         }
       case Error():
         {

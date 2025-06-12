@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:shopping_app/providers/dependences.dart';
+import 'package:shopping_app/config/dependences.dart';
 import 'package:shopping_app/routing/routes.dart';
-import 'package:shopping_app/ui/core/colors/light_color.dart';
 import 'package:shopping_app/ui/core/ui/custom_app_bar.dart';
 import 'package:shopping_app/ui/core/ui/custom_button.dart';
 import 'package:shopping_app/ui/core/ui/custom_text_form_field.dart';
@@ -100,7 +99,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   switch (result) {
   case Ok(): {
      print(result.value);
-     context.go(Routes.home);
+     context.go(Routes.mainScreen);
    }
    case Error(): {
     print(result.error);
