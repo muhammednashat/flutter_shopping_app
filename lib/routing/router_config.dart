@@ -1,11 +1,14 @@
 
 
 import 'package:go_router/go_router.dart';
+import 'package:shopping_app/data/model/product.dart';
 import 'package:shopping_app/routing/routes.dart';
 import 'package:shopping_app/splash_screen.dart';
 import 'package:shopping_app/ui/auth/forgot_password_screen.dart';
 import 'package:shopping_app/ui/auth/login_screen.dart';
 import 'package:shopping_app/ui/auth/signup_screen.dart';
+import 'package:shopping_app/ui/display_products/display_all_products.dart';
+import 'package:shopping_app/ui/display_products/display_product.dart';
 import 'package:shopping_app/ui/main_screen.dart';
 final routerConfig =  _buildRouter();
 
@@ -33,6 +36,28 @@ GoRouter _buildRouter() {
         path: Routes.mainScreen,
         builder: (context, state) => MainScreen(),
       ),
+
+GoRoute(path: Routes.displayProduct, 
+ builder: (context, state) {
+
+  final product = state.extra as Product;
+  return DisplayProdcut( product: product);
+
+ },
+),
+      GoRoute(path: Routes.displayAllProducts , 
+       builder: (context, state)
+       {
+       final data = state.extra as Map<String,Object>;
+       final title = data['title'] as String;
+       final products = data['products'] as List<Product>; 
+ 
+        return DisplayAllProducts(title: title, products: products);
+       
+       
+       }
+       
+      )
     ],
   );
 }

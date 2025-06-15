@@ -5,16 +5,17 @@ import 'package:shopping_app/ui/core/colors/light_color.dart';
 class CustomRatingWidget extends StatelessWidget {
   const CustomRatingWidget({
     super.key,
+    required this.initialRating
   });
-
+final double initialRating;
   @override
   Widget build(BuildContext context) {
     return RatingBar.builder(
       unratedColor: gray3,
       itemSize: 20.0,
       ignoreGestures: true,
-      initialRating: 3,
-      minRating: 1,
+      initialRating: initialRating,
+      minRating: 0,
       direction: Axis.horizontal,
       allowHalfRating: true,
       itemCount: 5,

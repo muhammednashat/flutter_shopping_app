@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:shopping_app/data/model/product.dart';
+import 'package:shopping_app/routing/routes.dart';
 import 'package:shopping_app/ui/core/ui/product_card.dart';
 
 class SectionWidget extends StatelessWidget {
 
   final String title;
   final String subTile;
-
-  const SectionWidget({super.key, required this.title, required this.subTile});
+  final List<Product> products;
+  const SectionWidget({super.key, required this.title, required this.subTile , required this.products});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +22,10 @@ class SectionWidget extends StatelessWidget {
           Text(title , style: Theme.of(context).textTheme.headlineLarge,),
           GestureDetector(
             onTap: () {
-              
+              context.push(Routes.displayAllProducts , extra: {
+                'title': title,
+                'products': products
+              });
             },
             child: Text('view all'))
         ],
@@ -27,7 +33,15 @@ class SectionWidget extends StatelessWidget {
       
       Text(subTile,style: Theme.of(context).textTheme.titleSmall,),
       SizedBox(height: 24,)
-      ,ProductCard()
+      ,SizedBox(
+        height: 300,
+        child: ListView.builder(
+        
+          scrollDirection: Axis.horizontal,
+          itemCount: products.length,
+          itemBuilder: (context, index)=>ProductCard(product: products[index],) ),
+      )
+      ,
     ],
     );
   }

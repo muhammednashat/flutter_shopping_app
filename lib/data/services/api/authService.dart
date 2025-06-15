@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:shopping_app/utils/result.dart';
 
 class Authservice {
   final dio = Dio();
