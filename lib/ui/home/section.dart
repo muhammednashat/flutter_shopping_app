@@ -8,8 +8,9 @@ class SectionWidget extends StatelessWidget {
 
   final String title;
   final String subTile;
+  final bool isNew;
   final List<Product> products;
-  const SectionWidget({super.key, required this.title, required this.subTile , required this.products});
+  const SectionWidget({super.key, required this.title, required this.subTile , required this.products, required this.isNew});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +40,7 @@ class SectionWidget extends StatelessWidget {
         
           scrollDirection: Axis.horizontal,
           itemCount: products.length,
-          itemBuilder: (context, index)=>ProductCard(product: products[index],) ),
+          itemBuilder: (context, index)=>ProductCard(isNew: isNew,product: products[index],) ),
       )
       ,
     ],

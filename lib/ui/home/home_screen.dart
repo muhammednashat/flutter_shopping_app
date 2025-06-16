@@ -66,7 +66,7 @@ class __NewProductsWidgetStateState extends ConsumerState<NewProductsWidget> {
       myPrint(value.length);
      return Column(
      children: [
-     SectionWidget(title: 'New', subTile: 'You\'ve never seen it before' , products:value),
+     SectionWidget(isNew: true,title: 'New', subTile: 'You\'ve never seen it before' , products:value),
     ],
     ); 
     } 
@@ -97,7 +97,7 @@ class _SalingProductsWidgetState extends ConsumerState<SalingProductsWidget> {
       case AsyncData(:final value):
       return Column(
      children: [
-     SectionWidget(title: 'Sale', subTile: 'Super summer sale' , products:value),
+     SectionWidget(isNew: false,title: 'Sale', subTile: 'Super summer sale' , products:value),
     ],
     );       
     case AsyncError(:final error) :

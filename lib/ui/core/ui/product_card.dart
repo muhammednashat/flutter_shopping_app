@@ -6,14 +6,10 @@ import 'package:shopping_app/ui/core/colors/light_color.dart';
 import 'package:shopping_app/ui/core/ui/rating_widget.dart';
 import 'package:shopping_app/utils/util.dart';
 
-
 class ProductCard extends StatelessWidget {
-
   final Product product;
-  const ProductCard({
-    super.key,
-    required this.product
-  });
+  final bool? isNew;
+  const ProductCard({super.key, required this.product, this.isNew});
 
   @override
   Widget build(BuildContext context) {
@@ -27,52 +23,55 @@ class ProductCard extends StatelessWidget {
           children: [
             Stack(
               children: [
-      
                 GestureDetector(
-                  onTap: (){
-                   context.push(Routes.displayProduct,
-                    extra:  product,
-                   );
+                  onTap: () {
+                    context.push(Routes.displayProduct, extra: product);
                   },
                   child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(10),
                     child: Image.network(
-                     product.imageUrl,
-                      width:160.0 ,
+                      product.imageUrl,
+                      width: 160.0,
                       height: 200.0,
                       fit: BoxFit.cover,
-                      )),
+                    ),
+                  ),
                 ),
-      
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: DynamicWidget(text: product.discount, backgroundColor: blackColor,),
+
+                if (isNew != null)
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: DynamicWidget(
+                      text: (isNew!) ? 'New' : product.discount,
+                      backgroundColor: (isNew!) ? blackColor : primaryColor,
+                    ),
+                  ),
+                PositionedDirectional(
+                  bottom: 10,
+                  end: 10,
+                  child: Container(
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      shape: BoxShape.circle,
+                    ),
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.favorite_border, color: gray2, size: 25),
+                    ),
+                  ),
                 ),
-               PositionedDirectional(
-                bottom: 10,
-                end: 10,
-                child: Container(
-                  width: 40,
-                  height: 40,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  shape: BoxShape.circle
-                ),
-                child: IconButton(onPressed: (){}, icon: Icon(
-                  Icons.favorite_border
-                 ,color: gray2
-                ,size: 25,)),
-               ) ),
                 SizedBox(height: 12),
               ],
             ),
-           
+
             SizedBox(height: 8.0),
-           
+
             Row(
               children: [
-                CustomRatingWidget(initialRating: product.rating.toDouble(),),
-        
+                CustomRatingWidget(initialRating: product.rating.toDouble()),
+
                 SizedBox(width: 4.0),
                 Text(
                   '(10)',
@@ -82,14 +81,9 @@ class ProductCard extends StatelessWidget {
                 ),
               ],
             ),
-        
+
             SizedBox(width: 4.0),
-            Text(
-            product.name,
-              style: Theme.of(
-                context,
-              ).textTheme.titleSmall,
-            ),
+            Text(product.name, style: Theme.of(context).textTheme.titleSmall),
             SizedBox(width: 4.0),
             Text(
               product.brandName,
@@ -97,9 +91,13 @@ class ProductCard extends StatelessWidget {
             ),
             Row(
               children: [
-                Text('${product.originalPrice}\$', style: TextStyle(
-                  decoration:  TextDecoration.lineThrough,
-                  color: gray2)),
+                Text(
+                  '${product.originalPrice}\$',
+                  style: TextStyle(
+                    decoration: TextDecoration.lineThrough,
+                    color: gray2,
+                  ),
+                ),
                 SizedBox(width: 4.0),
                 Text(
                   '${product.salePrice}\$',
@@ -119,21 +117,23 @@ class ProductCard extends StatelessWidget {
 
 class DynamicWidget extends StatelessWidget {
   const DynamicWidget({
-    super.key, required this.text, required this.backgroundColor,
+    super.key,
+    required this.text,
+    required this.backgroundColor,
   });
 
-final String text;
-final Color backgroundColor;
+  final String text;
+  final Color backgroundColor;
   @override
   Widget build(BuildContext context) {
     return Container(
-    padding: EdgeInsets.all(4),
-     
-      child: Text(text , style: TextStyle(color: Colors.white),),
+      padding: EdgeInsets.all(4),
+
+      child: Text(text, style: TextStyle(color: Colors.white)),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(4),
-        color: backgroundColor),
+        color: backgroundColor,
+      ),
     );
   }
 }
-
