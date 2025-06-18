@@ -1,6 +1,7 @@
 
 
 import 'package:go_router/go_router.dart';
+import 'package:shopping_app/data/model/category.dart';
 import 'package:shopping_app/data/model/product.dart';
 import 'package:shopping_app/routing/routes.dart';
 import 'package:shopping_app/splash_screen.dart';
@@ -10,6 +11,7 @@ import 'package:shopping_app/ui/auth/signup_screen.dart';
 import 'package:shopping_app/ui/display_products/display_all_products.dart';
 import 'package:shopping_app/ui/display_products/display_product.dart';
 import 'package:shopping_app/ui/main_screen.dart';
+import 'package:shopping_app/ui/shop/display_categories_products.dart';
 final routerConfig =  _buildRouter();
 
 
@@ -45,6 +47,15 @@ GoRoute(path: Routes.displayProduct,
 
  },
 ),
+
+GoRoute(path: Routes.displayCategoryProducts, 
+ builder: (context, state) {
+  final category = state.extra as Category;
+  return DisplayCategoriesProducts( category: category);
+
+ },
+),
+
       GoRoute(path: Routes.displayAllProducts , 
        builder: (context, state)
        {

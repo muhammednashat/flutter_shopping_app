@@ -28,7 +28,9 @@ class _DisplayAllProductsState extends State<DisplayAllProducts> {
         ),
       ),
 
-      body: GridView.builder(
+      body: 
+      
+      GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisSpacing: 10,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/ui/core/colors/light_color.dart';
 import 'package:shopping_app/ui/shop/categories.dart';
-import 'package:shopping_app/ui/shop/display_item.dart';
 
 class ShopScreen extends StatelessWidget {
   const ShopScreen({super.key});
@@ -15,8 +15,11 @@ class ShopScreen extends StatelessWidget {
           centerTitle: true,
           title: Text('Categories'),
             bottom: TabBar(
-              labelColor: Colors.white,
-              dividerColor: Colors.transparent,
+                isScrollable: true,
+              labelColor: primaryColor,
+              indicatorColor: primaryColor,
+              dividerColor: blackColor,
+              indicatorWeight: 16.0,
               tabs: [
                 Tab(text: 'Men'),
                 Tab(text: 'Boys'),
