@@ -9,7 +9,6 @@ import 'package:shopping_app/myapp.dart';
 
 void main()async {
   WidgetsFlutterBinding.ensureInitialized();
-
   await _setUpHive(); 
 
   runApp(ProviderScope(child:const MyApp() ,));

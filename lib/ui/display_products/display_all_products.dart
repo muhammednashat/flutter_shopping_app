@@ -27,15 +27,17 @@ class _DisplayAllProductsState extends State<DisplayAllProducts> {
           style: Theme.of(context).textTheme.headlineLarge,
         ),
       ),
-      body: Center(
-        child: GridView.count(
+
+      body: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          children: List.generate(
-            widget.products.length,
-            (index) => ProductCard(product: widget.products[index]),
-          ),
+          mainAxisSpacing: 10,
+          crossAxisSpacing: 10,
+          childAspectRatio:.6, // Adjust this manually
         ),
-      ),
+        itemCount: widget.products.length,
+        itemBuilder: (_, index) => ProductCard(product:  widget.products[index]),
+      )
     );
   }
 }

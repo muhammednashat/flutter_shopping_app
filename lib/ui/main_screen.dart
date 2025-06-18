@@ -4,7 +4,7 @@ import 'package:shopping_app/ui/core/colors/light_color.dart';
 import 'package:shopping_app/ui/home/home_screen.dart';
 import 'package:shopping_app/ui/profile/favorites_screen.dart';
 import 'package:shopping_app/ui/profile/profile_screen.dart';
-import 'package:shopping_app/ui/shop/categories_screen.dart';
+import 'package:shopping_app/ui/shop/shop_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -18,7 +18,7 @@ class _MainScreenState extends State<MainScreen> {
   var currentIndex = 0;
    final List<Widget> _widgets = [
     HomeScreen(),
-    CategoriesScreen(),
+    ShopScreen(),
     BagScreen(),
     FavoritesScreen(),
     ProfileScreen(),

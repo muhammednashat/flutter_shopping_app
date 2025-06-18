@@ -77,7 +77,7 @@ class _DisplayProdcutState extends State<DisplayProdcut> {
   ,SizedBox(height: 8.0,)
 ,   Row(
               children: [
-                CustomRatingWidget(initialRating: _product.rating.toDouble(),),
+                CustomRatingWidget(initialRating: _product.rating.toDouble(),numRating: _product.numRating,),
         
                 SizedBox(width: 4.0),
                 Text(

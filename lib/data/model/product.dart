@@ -6,13 +6,14 @@ class Product {
   bool isNew;
   bool isOnSale;
   String brandName;
-  int rating;
+  double rating;
   double originalPrice;
   double salePrice;
   String discount;
-
-  // String discription; 
-  // int numberRating;
+  String description;
+  String mainCategory;
+  String subCategory;
+  int numRating;
 
   Product({
     required this.id,
@@ -26,6 +27,10 @@ class Product {
     required this.originalPrice,
     required this.salePrice,
     required this.discount,
+    required this.description,
+    required this.mainCategory,
+    required this.subCategory,
+    required this.numRating,
   });
 
   factory Product.fromJson(Map<String, dynamic> json) {
@@ -37,15 +42,18 @@ class Product {
       isNew: json['isnew'] as bool,
       isOnSale: json['isOnSale'] as bool,
       brandName: json['brandName'] as String,
-      rating: json['rating'] as int,
+      rating: (json['rating'] as num).toDouble(),
       originalPrice: (json['originalPrice'] as num).toDouble(),
       salePrice: (json['salePrice'] as num).toDouble(),
       discount: json['discount'] as String,
+      description: json['description'] as String,
+      mainCategory: json['mainCategory'] as String,
+      subCategory: json['subCategory'] as String,
+      numRating: json['numRating'] as int,
     );
   }
 
-
-toJson(){}
+  toJson() {}
   String toString() {
     return 'Product(id: $id, name: $name, imageUrl: $imageUrl, category: $category, isNew: $isNew, isOnSale: $isOnSale, brandName: $brandName, rating: $rating, originalPrice: $originalPrice, salePrice: $salePrice, discount: $discount)';
   }

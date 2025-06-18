@@ -67,20 +67,7 @@ class ProductCard extends StatelessWidget {
             ),
 
             SizedBox(height: 8.0),
-
-            Row(
-              children: [
-                CustomRatingWidget(initialRating: product.rating.toDouble()),
-
-                SizedBox(width: 4.0),
-                Text(
-                  '(10)',
-                  style: Theme.of(
-                    context,
-                  ).textTheme.titleSmall?.copyWith(color: gray1),
-                ),
-              ],
-            ),
+                CustomRatingWidget(initialRating: product.rating.toDouble(), numRating:product.numRating),
 
             SizedBox(width: 4.0),
             Text(product.name, style: Theme.of(context).textTheme.titleSmall),
