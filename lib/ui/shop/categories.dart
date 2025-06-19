@@ -1,27 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/data/model/category.dart';
-import 'package:shopping_app/data/model/product.dart';
 import 'package:shopping_app/ui/core/colors/light_color.dart';
-import 'package:shopping_app/ui/core/ui/category_item.dart';
-
-
-Product product = Product(id: 'id', name: 'name', imageUrl: 'https://raw.githubusercontent.com/muhammednashat/images_shopping_app/main/boy_t_shirt1.jpg', category: 'category', isNew: true, isOnSale: true, brandName: 'brandName', rating: 25.0, originalPrice: 25.0, salePrice: 52.5, discount: '25.0%', description: 'description', mainCategory: 'mainCategory', subCategory: 'subCategory', numRating: 52);
-
-List<Category> categories = [
-   Category(category: "Clothing",mainCategory: "Women",subCategory: "Tops" ,imageUrl: 'https://raw.githubusercontent.com/muhammednashat/images_shopping_app/main/boy_t_shirt1.jpg' ,products:[product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,] ),
-   Category(category: "Clothing",mainCategory: "Women",subCategory: "Tops" ,imageUrl: 'https://raw.githubusercontent.com/muhammednashat/images_shopping_app/main/boy_t_shirt1.jpg' ,products:[product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,] ),
-   Category(category: "Clothing",mainCategory: "Women",subCategory: "Tops" ,imageUrl: 'https://raw.githubusercontent.com/muhammednashat/images_shopping_app/main/boy_t_shirt1.jpg' ,products:[product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,] ),
-   Category(category: "Clothing",mainCategory: "Women",subCategory: "Tops" ,imageUrl: 'https://raw.githubusercontent.com/muhammednashat/images_shopping_app/main/boy_t_shirt1.jpg' ,products:[product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,] ),
-   Category(category: "Clothing",mainCategory: "Women",subCategory: "Tops" ,imageUrl: 'https://raw.githubusercontent.com/muhammednashat/images_shopping_app/main/boy_t_shirt1.jpg' ,products:[product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,] ),
-   Category(category: "Clothing",mainCategory: "Women",subCategory: "Tops" ,imageUrl: 'https://raw.githubusercontent.com/muhammednashat/images_shopping_app/main/boy_t_shirt1.jpg' ,products:[product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,] ),
-   Category(category: "Clothing",mainCategory: "Women",subCategory: "Tops" ,imageUrl: 'https://raw.githubusercontent.com/muhammednashat/images_shopping_app/main/boy_t_shirt1.jpg' ,products:[product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,] ),
-   Category(category: "Clothing",mainCategory: "Women",subCategory: "Tops" ,imageUrl: 'https://raw.githubusercontent.com/muhammednashat/images_shopping_app/main/boy_t_shirt1.jpg' ,products:[product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,] ),
-   Category(category: "Clothing",mainCategory: "Women",subCategory: "Tops" ,imageUrl: 'https://raw.githubusercontent.com/muhammednashat/images_shopping_app/main/boy_t_shirt1.jpg' ,products:[product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,] ),
-   Category(category: "Clothing",mainCategory: "Women",subCategory: "Tops" ,imageUrl: 'https://raw.githubusercontent.com/muhammednashat/images_shopping_app/main/boy_t_shirt1.jpg' ,products:[product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,] ),
-   Category(category: "Clothing",mainCategory: "Women",subCategory: "Tops" ,imageUrl: 'https://raw.githubusercontent.com/muhammednashat/images_shopping_app/main/boy_t_shirt1.jpg' ,products:[product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,] ),
-   Category(category: "Clothing",mainCategory: "Women",subCategory: "Tops" ,imageUrl: 'https://raw.githubusercontent.com/muhammednashat/images_shopping_app/main/boy_t_shirt1.jpg' ,products:[product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,product,] ),
-   
-];
 
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({super.key});
@@ -54,13 +32,16 @@ class CategoriesScreen extends StatelessWidget {
               ),
             ),
           ),
-         Expanded(child: ListView.builder(
-          itemCount: categories.length,
-          itemBuilder: (context,index){
-            final category = categories[index];
-          return  CategoryItemWidget(category: category,);
-          }
-          ))
+
+
+        //  Expanded(child: ListView.builder(
+        //   itemCount: categories.length,
+        //   itemBuilder: (context,index){
+        //     final category = categories[index];
+        //   return  CategoryItemWidget(category: category,);
+        //   }
+        //   )
+          // )
         
         ],
       ),

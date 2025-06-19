@@ -3,9 +3,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shopping_app/data/repositories/authRepo.dart';
+import 'package:shopping_app/data/repositories/category_repo.dart';
 import 'package:shopping_app/data/repositories/product_repo.dart';
 import 'package:shopping_app/data/services/api/authService.dart';
 import 'package:shopping_app/data/services/api/products_service.dart';
+import 'package:shopping_app/data/services/category_service.dart';
 
 
 
@@ -25,9 +27,13 @@ final boxCollectionProvider = FutureProvider<BoxCollection>((ref) async {
 // Services
 final authServiceProvider  = Provider((ref) => Authservice());
 final productServiceProvider = Provider((ref)=> ProductService());
+final categoryServiceProvider = Provider((ref)=>CategoryService());
+
+
+
+
 
 // Repos
-
 final authRepoProvider = FutureProvider((ref) async{
  var service = ref.watch(authServiceProvider);
  final boxCollection = await ref.watch(boxCollectionProvider.future);
@@ -38,6 +44,14 @@ final productRepoProvider = Provider((ref) {
   final service =  ref.watch(productServiceProvider);
   return ProductsRepo(productService: service);
 });
+
+final categoryRepoProvider = Provider((ref){
+final categoryService = ref.watch(categoryServiceProvider);
+return CategoryRepo(categoryService: categoryService);
+} );
+
+
+
 final saleProductsProvider = FutureProvider((ref){
  final repo = ref.watch(productRepoProvider);
  return repo.retriveSallingProducts(); 
@@ -46,4 +60,10 @@ final saleProductsProvider = FutureProvider((ref){
 final newProductsProvider = FutureProvider((ref){
  final repo = ref.watch(productRepoProvider);
  return repo.retriveNewProducts(); 
+});
+
+
+final categoriesByCategory = FutureProvider((ref){
+ final repo = ref.watch(categoryRepoProvider);
+ return repo.getCategoriesByCategory(); 
 });

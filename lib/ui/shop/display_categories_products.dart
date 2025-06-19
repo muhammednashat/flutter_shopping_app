@@ -31,18 +31,18 @@ class _DisplayCategoriesProductsState extends State<DisplayCategoriesProducts> {
         children: [
          
           SizedBox(height: 8.0,),
-            Expanded(
-              child: GridView.builder(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 10,
-                        crossAxisSpacing: 10,
-                        childAspectRatio:.6, 
-                      ),
-                      itemCount: _category.products.length,
-                      itemBuilder: (_, index) => ProductCard(product:  _category.products[index]),
-                    ),
-            )
+            // Expanded(
+            //   child: GridView.builder(
+            //           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            //             crossAxisCount: 2,
+            //             mainAxisSpacing: 10,
+            //             crossAxisSpacing: 10,
+            //             childAspectRatio:.6, 
+            //           ),
+            //           itemCount: _category.products.length,
+            //           itemBuilder: (_, index) => ProductCard(product:  _category.products[index]),
+            //         ),
+            // )
         ],
       ),
     );
