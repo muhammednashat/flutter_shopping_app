@@ -36,7 +36,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
     print(isLogged);
     await Future.delayed(Durations.medium3);
     print('delayed');
-    if (isLogged) {
+    if (1<5) {
       print('home');
     context.go(Routes.mainScreen);
       

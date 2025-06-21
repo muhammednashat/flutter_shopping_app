@@ -1,5 +1,5 @@
 import 'package:shopping_app/data/model/category.dart';
-import 'package:shopping_app/data/services/category_service.dart';
+import 'package:shopping_app/data/services/api/category_service.dart';
 
 class CategoryRepo {
   

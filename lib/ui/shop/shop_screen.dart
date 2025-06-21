@@ -32,11 +32,11 @@ class ShopScreen extends StatelessWidget {
         ),
             body: TabBarView(
           children: [
-            CategoriesScreen(),
-             CategoriesScreen(),
-            CategoriesScreen(),
-             CategoriesScreen(),
-            CategoriesScreen(),
+            CategoriesScreen(mainCategory: 'Men',),
+            CategoriesScreen(mainCategory: 'Boys',),
+            CategoriesScreen(mainCategory: 'Kids' ,),
+            CategoriesScreen(mainCategory: 'Girls',),
+            CategoriesScreen(mainCategory: 'Girls',),
           ],
         ),
       ),

@@ -7,7 +7,11 @@ class CategoryService {
   final dio = Dio();
 
  Future<Response> getCategoriesByCategory(String category) async{
-    return await dio.get('${Constants.baseUrl}/get-categories-by-category');
+    return await dio.get(
+      '${Constants.baseUrl}/get-categories-by-category',
+        data: {"mainCategory":category}
+      
+      );
  }
   
 

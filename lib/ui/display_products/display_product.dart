@@ -51,48 +51,51 @@ class _DisplayProdcutState extends State<DisplayProdcut> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween
-                          ,children: [
-                          
-                          Row(
-                            children: [
-                          SizeItemWidget(size: 'S',),
-                          SizeItemWidget(size: 'M',),
-                          SizeItemWidget(size: 'L',),
-
-                            ],
-                          )
-                          
-                          ,FavoriteButtonWidget()]),
-                        SizedBox(height: 8.0,),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                            
-                          Text(_product.name,style: Theme.of(context).textTheme.headlineLarge,)
-                          ,Text('\$${_product.salePrice}',style: Theme.of(context).textTheme.headlineLarge,)
-                            ,
-                            ]),
-                            Text(_product.brandName,style: Theme.of(context).textTheme.bodyLarge,)
-  ,SizedBox(height: 8.0,)
-,   Row(
-              children: [
-                CustomRatingWidget(initialRating: _product.rating.toDouble(),numRating: _product.numRating,),
-        
-                SizedBox(width: 4.0),
-                Text(
-                  '(10)',
-                  style: Theme.of(
-                    context,
-                  ).textTheme.titleSmall?.copyWith(color: gray1),
-                ),
-
-              ],
-            ),
-                SizedBox(height: 8.0,),
-
-                            Text('dfd fsdf fa dfa dsaf dfa fasd fdf fdadsf dfdf dfa d df da dsfad dfasd dfasd dfasd dfsdaf dfdsf dfdfa dfsda dsfds dfsd dsfd dfds dsfas sdafsd dsfsdf dfsdf dfds dsfsdf dfsdaf dsfdsa sdfds fdsa dfds dsfsd dfsdf dfdsf df sdfasdf dsfa sdfsdf sdf dsf dfsd fsd',style: Theme.of(context).textTheme.bodyLarge,)
-
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                SizeItemWidget(size: 'S'),
+                                SizeItemWidget(size: 'M'),
+                                SizeItemWidget(size: 'L'),
+                              ],
+                            ),
+                            FavoriteButtonWidget(),
+                          ],
+                        ),
+                        SizedBox(height: 8.0),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              _product.name,
+                              style: Theme.of(context).textTheme.headlineLarge,
+                            ),
+                            Text(
+                              '\$${_product.salePrice}',
+                              style: Theme.of(context).textTheme.headlineLarge,
+                            ),
+                          ],
+                        ),
+                        Text(
+                          _product.brandName,
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
+                        SizedBox(height: 8.0),
+                        Row(
+                          children: [
+                            CustomRatingWidget(
+                              initialRating: _product.rating.toDouble(),
+                              numRating: _product.numRating,
+                            ),
+                            SizedBox(width: 4.0),
+                          ],
+                        ),
+                        SizedBox(height: 8.0),
+                        Text(
+                          _product.description,
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
                       ],
                     ),
                   ),
@@ -117,12 +120,9 @@ class _DisplayProdcutState extends State<DisplayProdcut> {
 }
 
 class SizeItemWidget extends StatelessWidget {
-
   final String size;
-  
-  const SizeItemWidget({
-    super.key, required this.size,
-  });
+
+  const SizeItemWidget({super.key, required this.size});
 
   @override
   Widget build(BuildContext context) {
@@ -131,12 +131,17 @@ class SizeItemWidget extends StatelessWidget {
       child: Container(
         width: 40.0,
         height: 40.0,
-        child: Center(child: Text(size,style: Theme.of(context).textTheme.headlineMedium, textAlign: TextAlign.center,)),
+        child: Center(
+          child: Text(
+            size,
+            style: Theme.of(context).textTheme.headlineMedium,
+            textAlign: TextAlign.center,
+          ),
+        ),
         decoration: BoxDecoration(
           color: Colors.white,
-          border: Border.all(width: 1.5,
-          color: gray1),
-         borderRadius: BorderRadius.circular(12.0)
+          border: Border.all(width: 1.5, color: gray1),
+          borderRadius: BorderRadius.circular(12.0),
         ),
       ),
     );
