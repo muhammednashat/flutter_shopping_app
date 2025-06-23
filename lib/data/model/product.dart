@@ -35,21 +35,21 @@ class Product {
 
   factory Product.fromJson(Map<String, dynamic> json) {
     return Product(
-      id: json['_id'] as String,
-      name: json['name'] as String,
-      imageUrl: json['imageUrl'] as String,
-      category: json['category'] as String,
-      isNew: json['isnew'] as bool,
-      isOnSale: json['isOnSale'] as bool,
-      brandName: json['brandName'] as String,
-      rating: (json['rating'] as num).toDouble(),
-      originalPrice: (json['originalPrice'] as num).toDouble(),
-      salePrice: (json['salePrice'] as num).toDouble(),
-      discount: json['discount'] as String,
-      description: json['description'] as String,
-      mainCategory: json['mainCategory'] as String,
-      subCategory: json['subCategory'] as String,
-      numRating: json['numRating'] as int,
+      id: json['_id']?.toString() ?? '',
+      name: json['name']?.toString() ?? '',
+      imageUrl: json['imageUrl']?.toString() ?? '',
+      category: json['category']?.toString() ?? '',
+      isNew: json['isnew'] ?? false,
+      isOnSale: json['isOnSale'] ?? false,
+      brandName: json['brandName']?.toString() ?? '',
+      rating: (json['rating'] ?? 0).toDouble(),
+      originalPrice: (json['originalPrice'] ?? 0).toDouble(),
+      salePrice: (json['salePrice'] ?? 0).toDouble(),
+      discount: json['discount']?.toString() ?? '0%',
+      description: json['description']?.toString() ?? '',
+      mainCategory: json['mainCategory']?.toString() ?? '',
+      subCategory: json['subCategory']?.toString() ?? '',
+      numRating: (json['numRating'] ?? 0) as int,
     );
   }
 

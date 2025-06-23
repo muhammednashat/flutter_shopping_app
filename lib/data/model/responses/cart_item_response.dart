@@ -1,4 +1,4 @@
-class CartItemResponseModel {
+class CartItemResponse {
   String id;
   String productId;
   int quantity;
@@ -7,7 +7,7 @@ class CartItemResponseModel {
   String imgUrl;
   double price;
 
-  CartItemResponseModel({
+  CartItemResponse({
     required this.id,
     required this.productId,
     required this.quantity,
@@ -17,9 +17,9 @@ class CartItemResponseModel {
     required this.price,
   });
 
-  factory CartItemResponseModel.fromJson(Map<String, dynamic> json) {
-    return CartItemResponseModel(
-      id: json['id'],
+  factory CartItemResponse.fromJson(Map<String, dynamic> json) {
+    return CartItemResponse(
+      id: json['_id'],
       productId: json['productId'],
       quantity: json['quantity'],
       size: json['size'],

@@ -9,9 +9,11 @@ class ProductsRepo {
   Future<List<Product>> retriveSallingProducts() async {
     try {
       final response = await productService.retriveSallingProducts();
+        myPrint(response.statusCode);
       if (response.statusCode == 200) {
         final data = response.data as List<dynamic>;
         final products = data.map((e) => Product.fromJson(e)).toList();
+         myPrint(products);
         return products;
       } else {
         return List.empty();
@@ -24,10 +26,12 @@ class ProductsRepo {
   Future<List<Product>> retriveNewProducts() async {
     try {
       final response = await productService.retriveNewProducts();
-      myPrint(response.statusCode);
+      // myPrint(response.statusCode);
       if (response.statusCode == 200) {
+        myPrint(response.data);
         final data = response.data as List<dynamic>;
         final products = data.map((e) => Product.fromJson(e)).toList();
+        myPrint(products);
         return products;
       } else {
         return List.empty();
