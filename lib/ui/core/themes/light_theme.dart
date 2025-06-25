@@ -36,13 +36,16 @@ ThemeData _buildLightTheme() {
     
     textTheme: TextTheme(
 
-//display* → Big, bold titles (e.g., app title)
 
-//headline* → Section titles
+
+//headline* → Section titles , App bar
       headlineLarge: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: blackColor),
+      
+      
       headlineMedium:TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: blackColor), 
+
 //title* → Smaller titles or subtitles
-      titleMedium: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: blackColor),
+      titleMedium: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: blackColor),
       titleSmall: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: gray1),
 
 //body* → Main content text

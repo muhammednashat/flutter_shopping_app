@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
@@ -10,7 +8,6 @@ import 'package:shopping_app/myapp.dart';
 void main()async {
   WidgetsFlutterBinding.ensureInitialized();
   await _setUpHive(); 
-
   runApp(ProviderScope(child:const MyApp() ,));
 }
 

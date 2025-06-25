@@ -1,41 +1,46 @@
 class CartItemResponse {
   String id;
-  String productId;
+  double salePrice;
   int quantity;
-  String? size;
-  String? color;
-  String imgUrl;
+  String? name;
+  String imageUrl;
   double price;
 
   CartItemResponse({
     required this.id,
-    required this.productId,
+    required this.salePrice,
     required this.quantity,
-    this.size,
-    this.color,
-    required this.imgUrl,
+    required this.name,
+    required this.imageUrl,
     required this.price,
   });
 
   factory CartItemResponse.fromJson(Map<String, dynamic> json) {
     return CartItemResponse(
-      id: json['_id'],
-      productId: json['productId'],
+      id: json['id'],
+      salePrice: json['salePrice'],
       quantity: json['quantity'],
-      size: json['size'],
-      color: json['color'],
-      imgUrl: json['imgUrl'],
+      name: json['name'],
+      imageUrl: json['imageUrl'],
       price: (json['price'] as num).toDouble(),
     );
   }
 
   Map<String, dynamic> toJson() => {
-        'id': id,
-        'productId': productId,
-        'quantity': quantity,
-        'size': size,
-        'color': color,
-        'imgUrl': imgUrl,
-        'price': price,
-      };
+    'id': id,
+    'salePrice': salePrice,
+    'quantity': quantity,
+    'name': name,
+    'imageUrl': imageUrl,
+    'price': price,
+  };
+
+
+
+@override
+String toString() {
+  return 'CartItemResponse(id: $id, name: $name, quantity: $quantity, price: $price)';
+}
+
+
 }

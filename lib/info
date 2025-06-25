@@ -1,5 +1,3 @@
 /*
-* Complete data layer (service and repo)
-  create dependency 
-*
+*  change return type of fetch data to list CartItemResponse
 /

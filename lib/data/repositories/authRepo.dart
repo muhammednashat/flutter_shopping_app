@@ -47,14 +47,14 @@ class AuthRepo {
     }
   }
 
+
   Future<void> storeUserLocaly(User value) async {
     final useresBox = await boxCollection.openBox('useres');
     final appData = await boxCollection.openBox('appData');
-    print('=========================');
-    final user = await useresBox.get('user') as User;
-    print(user.toString());
-
-    print('=========================');
+    // print('=========================');
+    // final user = await useresBox.get('user') as User;
+    // print(user.toString());
+    // print('=========================');
 
     await appData.put('isLogged', true);
     await useresBox.put('user', value);

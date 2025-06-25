@@ -8,6 +8,11 @@ class Routes {
   static const String displayAllProducts = '/displayAllProducts';
   static const String displayProduct = '/displayProduct';
   static const String displayCategoryProducts = '/displayCategoriesProducts';
+  static const String checkOut = '/checkOut';
+  static const String successScreen = '/successScreen';
 
+
+
+  
 
 }

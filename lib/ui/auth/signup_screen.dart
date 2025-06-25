@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -20,12 +19,9 @@ class SignupScreen extends ConsumerStatefulWidget {
 class _SignupScreenState extends ConsumerState<SignupScreen> {
   final _formKey = GlobalKey<FormState>();
   final _controllers = List.generate(3, (index) => TextEditingController());
- 
 
   @override
   Widget build(BuildContext context) {
-  
-
     return Scaffold(
       appBar: CustomAppBar(() {
         context.canPop();
@@ -90,7 +86,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                               style: Theme.of(context).textTheme.titleSmall,
                             ),
                             SizedBox(height: 3),
-                            Image.asset('assets/icons/arrow.png'),
+                            Image.asset(getIconPath('arrow.png')),
                           ],
                         ),
                       ),
@@ -111,23 +107,27 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
 
   _isValidate() => true;
 
-
   void _onpressed(BuildContext context) {
-    // final name = _controllers[0].text;
-    // final email = _controllers[1].text;
-    // final password = _controllers[2].text;
+    final name = _controllers[0].text;
+    final email = _controllers[1].text;
+    final password = _controllers[2].text;
 
-  final name = 'namw';
-    final email = 'asf@gmail.com';
-    final password = '123456789';
+    // final name = 'namw';
+    // final email = 'asdf@gmail.com';
+    // final password = '123456789';
 
     request(context, email, password, name);
   }
 
-  void request(BuildContext context, String email, String password, String name) async {
+  void request(
+    BuildContext context,
+    String email,
+    String password,
+    String name,
+  ) async {
     print('----------------------------------------------------');
     final repo = await ref.read(authRepoProvider.future);
-   
+
     final result = await repo.register(email, password, name);
     switch (result) {
       case Ok():

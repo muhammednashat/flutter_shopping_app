@@ -1,25 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:shopping_app/config/dependences.dart';
+import 'package:shopping_app/data/model/new_cart_item.dart';
 import 'package:shopping_app/data/model/product.dart';
+import 'package:shopping_app/data/repositories/cart_repo.dart';
+import 'package:shopping_app/routing/routes.dart';
 import 'package:shopping_app/ui/core/colors/light_color.dart';
 import 'package:shopping_app/ui/core/ui/custom_button.dart';
 import 'package:shopping_app/ui/core/ui/favorite_button.dart';
 import 'package:shopping_app/ui/core/ui/rating_widget.dart';
+import 'package:shopping_app/utils/util.dart';
+import 'package:shopping_app/utils/utils.dart';
 
-class DisplayProdcut extends StatefulWidget {
+class DisplayProdcut extends ConsumerStatefulWidget {
   const DisplayProdcut({super.key, required this.product});
-
   final Product product;
-
   @override
-  State<DisplayProdcut> createState() => _DisplayProdcutState();
+  ConsumerState<DisplayProdcut> createState() => _DisplayProdcutState();
 }
 
-class _DisplayProdcutState extends State<DisplayProdcut> {
+class _DisplayProdcutState extends ConsumerState<DisplayProdcut> {
   late Product _product;
+  late CartRepo _cartRepo;
+  late String _selectedSize;
+
   @override
   void initState() {
+    _cartRepo = ref.read(cartRepoProvider);
     _product = widget.product;
+    _selectedSize = "";
     super.initState();
   }
 
@@ -55,9 +65,34 @@ class _DisplayProdcutState extends State<DisplayProdcut> {
                           children: [
                             Row(
                               children: [
-                                SizeItemWidget(size: 'S'),
-                                SizeItemWidget(size: 'M'),
-                                SizeItemWidget(size: 'L'),
+                                SizeItemWidget(
+                                  size: 'S',
+                                  isSelected: _selectedSize == 'S',
+                                  onTap: () {
+                                    setState(() {
+                                      _selectedSize = 'S';
+                                    });
+                                  },
+                                ),
+
+                                SizeItemWidget(
+                                  size: 'M',
+                                  isSelected: _selectedSize == 'M',
+                                  onTap: () {
+                                    setState(() {
+                                      _selectedSize = 'M';
+                                    });
+                                  },
+                                ),
+                                SizeItemWidget(
+                                  size: 'L',
+                                  isSelected: _selectedSize == 'L',
+                                  onTap: () {
+                                    setState(() {
+                                      _selectedSize = 'L';
+                                    });
+                                  },
+                                ),
                               ],
                             ),
                             FavoriteButtonWidget(),
@@ -106,42 +141,82 @@ class _DisplayProdcutState extends State<DisplayProdcut> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
+              color: Colors.white,
               child: CustomElevatedButton(
                 text: 'Add to cart',
-                onPressed: () {},
+                onPressed: () {
+                  if (_selectedSize == "") {
+                    showToast("Please select a size");
+                    return;
+                  }
+                  addItemToCart();
+                },
               ),
-              color: Colors.white,
             ),
           ),
         ],
       ),
     );
   }
+
+  Future<NewCartItem> _newCartItem() async {
+    final user = await ref.read(userBoxCollictionProvider);
+    return NewCartItem(
+      userId: user.id,
+      productId: _product.id,
+      size: _selectedSize,
+      quantity: 1,
+    );
+  }
+
+  Future<void> addItemToCart() async {
+    final item = await _newCartItem();
+    final result = await _cartRepo.insertItemIntoCart(item);
+    if (result) {
+      showToast("A New item has added to your cart");
+      context.pop(Routes.checkOut);
+    } else {
+      showToast("A New item cann't add to your cart");
+    }
+  }
 }
 
 class SizeItemWidget extends StatelessWidget {
   final String size;
+  final bool isSelected;
+  final VoidCallback onTap;
 
-  const SizeItemWidget({super.key, required this.size});
+  const SizeItemWidget({
+    super.key,
+    required this.size,
+    required this.isSelected,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(4.0),
-      child: Container(
-        width: 40.0,
-        height: 40.0,
-        child: Center(
-          child: Text(
-            size,
-            style: Theme.of(context).textTheme.headlineMedium,
-            textAlign: TextAlign.center,
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          width: 40.0,
+          height: 40.0,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border.all(
+              width: 1.5,
+              color: (isSelected) ? primaryColor : gray1,
+            ),
+            borderRadius: BorderRadius.circular(12.0),
           ),
-        ),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          border: Border.all(width: 1.5, color: gray1),
-          borderRadius: BorderRadius.circular(12.0),
+          child: Center(
+            child: Text(
+              size,
+              style: Theme.of(context).textTheme.headlineMedium,
+              textAlign: TextAlign.center,
+            ),
+          ),
         ),
       ),
     );

@@ -32,11 +32,11 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   void navigateBasedState() async{
     final boxCollection  = await ref.read(boxCollectionProvider.future);
     final appData = await boxCollection.openBox('appData');
-    final isLogged = await appData.get('isLogged');
+    final isLogged = await appData.get('isLogged') ?? false;
     print(isLogged);
     await Future.delayed(Durations.medium3);
     print('delayed');
-    if (1<5) {
+    if (isLogged) {
       print('home');
     context.go(Routes.mainScreen);
       

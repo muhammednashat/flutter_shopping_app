@@ -3,10 +3,14 @@ import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shopping_app/data/model/category.dart';
 import 'package:shopping_app/data/model/product.dart';
+import 'package:shopping_app/data/model/responses/cart_response.dart';
+import 'package:shopping_app/data/model/user.dart';
 import 'package:shopping_app/data/repositories/authRepo.dart';
+import 'package:shopping_app/data/repositories/cart_repo.dart';
 import 'package:shopping_app/data/repositories/category_repo.dart';
 import 'package:shopping_app/data/repositories/product_repo.dart';
 import 'package:shopping_app/data/services/api/authService.dart';
+import 'package:shopping_app/data/services/api/cart_service.dart';
 import 'package:shopping_app/data/services/api/products_service.dart';
 import 'package:shopping_app/data/services/api/category_service.dart';
 
@@ -23,10 +27,19 @@ final boxCollectionProvider = FutureProvider<BoxCollection>((ref) async {
   return collection;
 });
 
+final userBoxCollictionProvider = Provider((ref) async {
+
+final boxCollection = await ref.watch(boxCollectionProvider.future);
+ final useresBox = await boxCollection.openBox('useres')  ;  
+ return await useresBox.get('user') as User;
+
+});
+
 // Services
 final authServiceProvider = Provider((ref) => Authservice());
 final productServiceProvider = Provider((ref) => ProductService());
 final categoryServiceProvider = Provider((ref) => CategoryService());
+final cartServiceProvider = Provider((ref) => CartService());
 
 // Repos
 final authRepoProvider = FutureProvider((ref) async {
@@ -45,6 +58,12 @@ final categoryRepoProvider = Provider((ref) {
   return CategoryRepo(categoryService: categoryService);
 });
 
+final cartRepoProvider = Provider((ref) {
+  final service = ref.watch(cartServiceProvider);
+  return CartRepo(service: service);
+});
+
+// Future Apis
 final saleProductsProvider = FutureProvider((ref) {
   final repo = ref.watch(productRepoProvider);
   return repo.retriveSallingProducts();
@@ -55,14 +74,22 @@ final newProductsProvider = FutureProvider((ref) {
   return repo.retriveNewProducts();
 });
 
-final getProductsByCategoryProvider = FutureProvider
-    .family<List<Product>, Map<String, dynamic>>((ref, query) {
+final getProductsByCategoryProvider =
+    FutureProvider.family<List<Product>, Map<String, dynamic>>((ref, query) {
       final repo = ref.watch(productRepoProvider);
       return repo.getProductsByCategory(query);
     });
 
-final categoriesByCategoryProvider = FutureProvider
-    .family<List<Category>, String>((ref, mainCategory) {
+final categoriesByCategoryProvider =
+    FutureProvider.family<List<Category>, String>((ref, mainCategory) {
       final repo = ref.watch(categoryRepoProvider);
       return repo.getCategoriesByCategory(mainCategory);
+    });
+
+    final fetchCartItemsProvider = 
+    FutureProvider
+    .autoDispose
+    .family<CartResponse, String>((ref, userId) async{
+      final cartRepo = ref.watch(cartRepoProvider);
+      return  cartRepo.fetchCartItems(userId);
     });

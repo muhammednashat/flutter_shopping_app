@@ -8,9 +8,11 @@ import 'package:shopping_app/splash_screen.dart';
 import 'package:shopping_app/ui/auth/forgot_password_screen.dart';
 import 'package:shopping_app/ui/auth/login_screen.dart';
 import 'package:shopping_app/ui/auth/signup_screen.dart';
+import 'package:shopping_app/ui/payment/check_out.dart';
 import 'package:shopping_app/ui/display_products/display_all_products.dart';
 import 'package:shopping_app/ui/display_products/display_product.dart';
 import 'package:shopping_app/ui/main_screen.dart';
+import 'package:shopping_app/ui/payment/success_screen.dart';
 import 'package:shopping_app/ui/shop/display_categories_products.dart';
 final routerConfig =  _buildRouter();
 
@@ -29,6 +31,15 @@ GoRouter _buildRouter() {
       GoRoute(
         path: Routes.signup,
         builder: (context, state) => SignupScreen(),
+      ),
+
+       GoRoute(
+        path: Routes.checkOut,
+        builder: (context, state) => CheckOut(),
+      ),
+      GoRoute(
+        path: Routes.successScreen,
+        builder: (context, state) => SuccessScreen(),
       ),
       GoRoute(
         path: Routes.forgotPassword,

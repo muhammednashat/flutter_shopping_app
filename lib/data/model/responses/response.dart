@@ -1,11 +1,11 @@
-class Response {
+class AppResponse {
   int status;
   String msg;
 
-  Response({required this.status, required this.msg});
+  AppResponse({required this.status, required this.msg});
 
-  factory Response.fromJson(Map<String, dynamic> json) {
-    return Response(status: json['status'] , msg: json['msg']);
+  factory AppResponse.fromJson(Map<String, dynamic> json) {
+    return AppResponse(status: json['status'] , msg: json['msg']);
   }
 
   toJson() => {
