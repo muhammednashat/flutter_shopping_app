@@ -2,8 +2,9 @@ class CartItemResponse {
   String id;
   double salePrice;
   int quantity;
-  String? name;
+  String name;
   String imageUrl;
+  String size;
   double price;
 
   CartItemResponse({
@@ -13,6 +14,7 @@ class CartItemResponse {
     required this.name,
     required this.imageUrl,
     required this.price,
+    required this.size,
   });
 
   factory CartItemResponse.fromJson(Map<String, dynamic> json) {
@@ -22,6 +24,7 @@ class CartItemResponse {
       quantity: json['quantity'],
       name: json['name'],
       imageUrl: json['imageUrl'],
+      size: json['size'],
       price: (json['price'] as num).toDouble(),
     );
   }
@@ -33,13 +36,15 @@ class CartItemResponse {
     'name': name,
     'imageUrl': imageUrl,
     'price': price,
+    'size': size,
+
   };
 
 
 
 @override
 String toString() {
-  return 'CartItemResponse(id: $id, name: $name, quantity: $quantity, price: $price)';
+  return 'CartItemResponse(id: $id, name: $name, quantity: $quantity, price: $price, size: $size)';
 }
 
 

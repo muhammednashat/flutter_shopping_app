@@ -6,25 +6,28 @@ class CartItemQuantityControl extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          '30\$',
-          style: Theme.of(
-            context,
-          ).textTheme.titleMedium?.copyWith(fontSize: 24.0),
-        ),
-        Row(
-          children: [
-            QuantatyControl(icon: Icons.remove),
-            SizedBox(width: 6.0),
-            Text('1', style: Theme.of(context).textTheme.titleMedium),
-            SizedBox(width: 6.0),
-            QuantatyControl(icon: Icons.add),
-          ],
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Text(
+            '30\$',
+            style: Theme.of(
+              context,
+            ).textTheme.titleMedium?.copyWith(fontSize: 24.0),
+          ),
+          // Row(
+          //   children: [
+          //     QuantatyControl(icon: Icons.remove),
+          //     SizedBox(width: 6.0),
+          //     Text('1', style: Theme.of(context).textTheme.titleMedium),
+          //     SizedBox(width: 6.0),
+          //     QuantatyControl(icon: Icons.add),
+          //   ],
+          // ),
+        ],
+      ),
     );
   }
 }

@@ -3,6 +3,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:shopping_app/data/model/category.dart';
 import 'package:shopping_app/data/model/product.dart';
+import 'package:shopping_app/data/model/responses/cart_response.dart';
 import 'package:shopping_app/routing/routes.dart';
 import 'package:shopping_app/splash_screen.dart';
 import 'package:shopping_app/ui/auth/forgot_password_screen.dart';
@@ -35,7 +36,11 @@ GoRouter _buildRouter() {
 
        GoRoute(
         path: Routes.checkOut,
-        builder: (context, state) => CheckOut(),
+        builder: (context, state)  {
+          final cartResponse = state.extra as CartResponse;
+          return CheckOut(cartResponse : cartResponse);
+          
+          },
       ),
       GoRoute(
         path: Routes.successScreen,

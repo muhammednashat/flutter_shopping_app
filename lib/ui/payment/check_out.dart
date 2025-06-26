@@ -1,18 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shopping_app/data/model/responses/cart_response.dart';
 import 'package:shopping_app/routing/routes.dart';
 import 'package:shopping_app/ui/core/colors/light_color.dart';
 import 'package:shopping_app/ui/core/ui/custom_button.dart';
 import 'package:shopping_app/utils/util.dart';
 
 class CheckOut extends StatefulWidget {
-  const CheckOut({super.key});
+  final CartResponse cartResponse;
+  const CheckOut({super.key, required this.cartResponse});
 
   @override
   State<CheckOut> createState() => _CheckOutState();
 }
 
 class _CheckOutState extends State<CheckOut> {
+late CartResponse _cartResponse;
+@override
+  void initState() {
+ _cartResponse = widget.cartResponse;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,11 +42,11 @@ class _CheckOutState extends State<CheckOut> {
             AdressSection(),
             SizedBox(height: 42.0),
 
-            ItemRow(lable: "Order", value: "130\$"),
+            ItemRow(lable: "Order", value: "${_cartResponse.totalPrice}\$"),
             SizedBox(height: 24.0),
-            ItemRow(lable: "Delivery", value: "25\$"),
+            ItemRow(lable: "Delivery", value: "25.0\$"),
             SizedBox(height: 24.0),
-            ItemRow(lable: "Summary", value: "155\$"),
+            ItemRow(lable: "Summary", value: "${(_cartResponse.totalPrice!) + 25.0 }\$"),
             SizedBox(height: 24.0),
             Expanded(
               child: Align(

@@ -25,32 +25,32 @@ class CartRepo {
     }
   }
 
-  Future<List<CartItemResponse>> fetchCartItems(String userId) async {
+  Future<CartResponse> fetchCartItems(String userId) async {
     try {
       final response = await service.getCartItems(userId);
-      final  extractCartItems(response);
+      myPrint(response);
+      final json = response.data as Map<String, dynamic>;
+      myPrint("CartResponse");
+
+      return CartResponse.fromJson(json);
     } catch (e) {
-      return null;
+      myPrint("catch =? $e");
+
+      return CartResponse.error(e.toString());
     }
   }
 
-
-
-  Future<CartResponse?> deletCartItem(Map<String, Object> json) async {
+  Future<CartResponse> deletCartItem(Map<String, Object> json) async {
     try {
       final response = await service.deletCartItem(json);
       return extractCartItems(response);
     } catch (e) {
-      return null;
+      return CartResponse.error(e.toString());
     }
   }
 
-  CartResponse? extractCartItems(Response response) {
-    if (response.statusCode == 200) {
-      final json = response.data as Map<String, dynamic>;
-      return CartResponse.fromJson(json);
-    } else {
-      return null;
-    }
+  CartResponse extractCartItems(Response response) {
+    final json = response.data as Map<String, dynamic>;
+    return CartResponse.fromJson(json);
   }
 }

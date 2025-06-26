@@ -3,6 +3,7 @@ import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shopping_app/data/model/category.dart';
 import 'package:shopping_app/data/model/product.dart';
+import 'package:shopping_app/data/model/responses/cart_item_response.dart';
 import 'package:shopping_app/data/model/responses/cart_response.dart';
 import 'package:shopping_app/data/model/user.dart';
 import 'package:shopping_app/data/repositories/authRepo.dart';
@@ -28,11 +29,9 @@ final boxCollectionProvider = FutureProvider<BoxCollection>((ref) async {
 });
 
 final userBoxCollictionProvider = Provider((ref) async {
-
-final boxCollection = await ref.watch(boxCollectionProvider.future);
- final useresBox = await boxCollection.openBox('useres')  ;  
- return await useresBox.get('user') as User;
-
+  final boxCollection = await ref.watch(boxCollectionProvider.future);
+  final useresBox = await boxCollection.openBox('useres');
+  return await useresBox.get('user') as User;
 });
 
 // Services
@@ -86,10 +85,8 @@ final categoriesByCategoryProvider =
       return repo.getCategoriesByCategory(mainCategory);
     });
 
-    final fetchCartItemsProvider = 
-    FutureProvider
-    .autoDispose
-    .family<CartResponse, String>((ref, userId) async{
+final fetchCartItemsProvider = FutureProvider.autoDispose
+    .family<CartResponse, String>((ref, userId) async {
       final cartRepo = ref.watch(cartRepoProvider);
-      return  cartRepo.fetchCartItems(userId);
+      return cartRepo.fetchCartItems(userId);
     });
