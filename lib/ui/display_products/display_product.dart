@@ -1,15 +1,18 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shopping_app/config/dependences.dart';
 import 'package:shopping_app/data/model/new_cart_item.dart';
 import 'package:shopping_app/data/model/product.dart';
+import 'package:shopping_app/data/model/responses/orders_response.dart';
 import 'package:shopping_app/data/repositories/cart_repo.dart';
 import 'package:shopping_app/routing/routes.dart';
 import 'package:shopping_app/ui/core/colors/light_color.dart';
 import 'package:shopping_app/ui/core/ui/custom_button.dart';
 import 'package:shopping_app/ui/core/ui/favorite_button.dart';
 import 'package:shopping_app/ui/core/ui/rating_widget.dart';
+import 'package:shopping_app/utils/constants.dart';
 import 'package:shopping_app/utils/util.dart';
 import 'package:shopping_app/utils/utils.dart';
 
@@ -158,6 +161,8 @@ class _DisplayProdcutState extends ConsumerState<DisplayProdcut> {
       ),
     );
   }
+
+
 
   Future<NewCartItem> _newCartItem() async {
     final user = await ref.read(userBoxCollictionProvider);
