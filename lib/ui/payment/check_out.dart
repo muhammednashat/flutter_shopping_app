@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shopping_app/config/dependences.dart';
 import 'package:shopping_app/data/model/responses/cart_response.dart';
 import 'package:shopping_app/routing/routes.dart';
 import 'package:shopping_app/ui/core/colors/light_color.dart';
 import 'package:shopping_app/ui/core/ui/custom_button.dart';
 import 'package:shopping_app/utils/util.dart';
 
-class CheckOut extends StatefulWidget {
+class CheckOut extends ConsumerStatefulWidget {
   final CartResponse cartResponse;
   const CheckOut({super.key, required this.cartResponse});
 
   @override
-  State<CheckOut> createState() => _CheckOutState();
+  ConsumerState<CheckOut> createState() => _CheckOutState();
 }
 
-class _CheckOutState extends State<CheckOut> {
+class _CheckOutState extends ConsumerState<CheckOut> {
 late CartResponse _cartResponse;
 @override
   void initState() {
@@ -54,7 +56,7 @@ late CartResponse _cartResponse;
                 child: CustomElevatedButton(
                   text: "SUBMIT ORDER",
                   onPressed: () {
-                    context.push(Routes.successScreen);
+                    _onSubmitPressed();
                   },
                 ),
               ),
@@ -64,6 +66,13 @@ late CartResponse _cartResponse;
       ),
     );
   }
+
+_onSubmitPressed()async{
+                    // context.push(Routes.successScreen);
+  final orderRepo = ref.read(ordersRepoProvider);
+
+}
+
 }
 
 class ItemRow extends StatelessWidget {

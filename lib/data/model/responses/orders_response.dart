@@ -2,6 +2,7 @@ import 'package:shopping_app/data/model/responses/cart_item_response.dart';
 import 'package:shopping_app/utils/utils.dart';
 
 class OrdersResponse {
+  String id;
   String userId;
   DateTime date;
   String status;
@@ -12,6 +13,7 @@ class OrdersResponse {
   List<CartItemResponse> items;
 
   OrdersResponse({
+    required this.id,
     required this.userId,
     required this.date,
     required this.status,
@@ -29,6 +31,8 @@ class OrdersResponse {
             .toList();
     myPrint(items);
     return OrdersResponse(
+      id: json['_id']
+    ,
       userId: json['userId'],
       date: DateTime.parse(json['date']),
       status: json['status'],
@@ -42,6 +46,7 @@ class OrdersResponse {
 
   Map<String, dynamic> toJson() {
     return {
+      'id':id,
       'userId': userId,
       'date': date.toIso8601String(),
       'status': status,
@@ -57,6 +62,7 @@ class OrdersResponse {
   String toString() {
     return '''
 OrdersResponse(
+'id: $id',
   userId: $userId,
   date: $date,
   status: $status,

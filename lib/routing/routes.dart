@@ -10,6 +10,7 @@ class Routes {
   static const String displayCategoryProducts = '/displayCategoriesProducts';
   static const String checkOut = '/checkOut';
   static const String successScreen = '/successScreen';
+  static const String orderDetails = '/orderDetails';
 
 
 

@@ -4,11 +4,13 @@ import 'package:go_router/go_router.dart';
 import 'package:shopping_app/data/model/category.dart';
 import 'package:shopping_app/data/model/product.dart';
 import 'package:shopping_app/data/model/responses/cart_response.dart';
+import 'package:shopping_app/data/model/responses/orders_response.dart';
 import 'package:shopping_app/routing/routes.dart';
 import 'package:shopping_app/splash_screen.dart';
 import 'package:shopping_app/ui/auth/forgot_password_screen.dart';
 import 'package:shopping_app/ui/auth/login_screen.dart';
 import 'package:shopping_app/ui/auth/signup_screen.dart';
+import 'package:shopping_app/ui/orders/order_details.dart';
 import 'package:shopping_app/ui/payment/check_out.dart';
 import 'package:shopping_app/ui/display_products/display_all_products.dart';
 import 'package:shopping_app/ui/display_products/display_product.dart';
@@ -45,6 +47,13 @@ GoRouter _buildRouter() {
       GoRoute(
         path: Routes.successScreen,
         builder: (context, state) => SuccessScreen(),
+      ),
+       GoRoute(
+        path: Routes.orderDetails,
+        builder: (context, state) {
+          final order = state.extra as OrdersResponse;
+          return OrderDetails(order:order);
+        },
       ),
       GoRoute(
         path: Routes.forgotPassword,

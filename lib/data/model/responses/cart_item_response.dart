@@ -22,7 +22,7 @@ class CartItemResponse {
       id: json['id'],
       salePrice: json['salePrice'],
       quantity: json['quantity'],
-      name: json['productName'],
+      name: json['name'],
       imageUrl: json['imageUrl'],
       size: json['size'],
       price: (json['price'] as num).toDouble(),

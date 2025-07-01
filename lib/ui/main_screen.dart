@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shopping_app/ui/bag/bag_screen.dart';
 import 'package:shopping_app/ui/core/colors/light_color.dart';
 import 'package:shopping_app/ui/home/home_screen.dart';
+import 'package:shopping_app/ui/orders/orders_screen.dart';
 import 'package:shopping_app/ui/profile/favorites_screen.dart';
 import 'package:shopping_app/ui/profile/profile_screen.dart';
 import 'package:shopping_app/ui/shop/shop_screen.dart';
@@ -20,6 +21,7 @@ class _MainScreenState extends State<MainScreen> {
     HomeScreen(),
     ShopScreen(),
     BagScreen(),
+    OrdersScreen(),
     FavoritesScreen(),
     ProfileScreen(),
    ];
@@ -55,6 +57,10 @@ body: Center(child: _widgets.elementAt(currentIndex)),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart_outlined),
             label: 'Bag',
+          ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.receipt),
+            label: 'Orders',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.favorite_border),

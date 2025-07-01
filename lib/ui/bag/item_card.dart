@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/data/model/responses/cart_item_response.dart';
 import 'package:shopping_app/ui/core/colors/light_color.dart';
-import 'package:shopping_app/ui/core/ui/cart_item_quantaty_control.dart';
-import 'package:shopping_app/utils/util.dart';
 
 class ItemCard extends StatefulWidget {
   const ItemCard({super.key, required this.item});

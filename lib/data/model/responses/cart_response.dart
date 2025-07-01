@@ -38,6 +38,10 @@ class CartResponse {
     );
   }
 
+  toJson(){
+    
+  }
+
   @override
   String toString() {
     return 'CartResponse(status: $status, msg: $msg, cartId: $cartId, items: $items)';
