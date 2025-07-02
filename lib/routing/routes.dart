@@ -11,7 +11,7 @@ class Routes {
   static const String checkOut = '/checkOut';
   static const String successScreen = '/successScreen';
   static const String orderDetails = '/orderDetails';
-
+  static const String settings = '/settings'; 
 
 
   

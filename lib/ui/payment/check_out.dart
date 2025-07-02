@@ -17,10 +17,10 @@ class CheckOut extends ConsumerStatefulWidget {
 }
 
 class _CheckOutState extends ConsumerState<CheckOut> {
-late CartResponse _cartResponse;
-@override
+  late CartResponse _cartResponse;
+  @override
   void initState() {
- _cartResponse = widget.cartResponse;
+    _cartResponse = widget.cartResponse;
     super.initState();
   }
 
@@ -48,7 +48,10 @@ late CartResponse _cartResponse;
             SizedBox(height: 24.0),
             ItemRow(lable: "Delivery", value: "25.0\$"),
             SizedBox(height: 24.0),
-            ItemRow(lable: "Summary", value: "${(_cartResponse.totalPrice!) + 25.0 }\$"),
+            ItemRow(
+              lable: "Summary",
+              value: "${(_cartResponse.totalPrice!) + 25.0}\$",
+            ),
             SizedBox(height: 24.0),
             Expanded(
               child: Align(
@@ -67,12 +70,11 @@ late CartResponse _cartResponse;
     );
   }
 
-_onSubmitPressed()async{
-                    // context.push(Routes.successScreen);
-  final orderRepo = ref.read(ordersRepoProvider);
-
-}
-
+  _onSubmitPressed() async {
+    final orderRepo = ref.read(ordersRepoProvider);
+    await orderRepo.submitOrder("685bbc9dcc011d99438160e8");
+    context.push(Routes.successScreen);
+  }
 }
 
 class ItemRow extends StatelessWidget {

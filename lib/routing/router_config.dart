@@ -16,6 +16,7 @@ import 'package:shopping_app/ui/display_products/display_all_products.dart';
 import 'package:shopping_app/ui/display_products/display_product.dart';
 import 'package:shopping_app/ui/main_screen.dart';
 import 'package:shopping_app/ui/payment/success_screen.dart';
+import 'package:shopping_app/ui/profile/settings_screen.dart';
 import 'package:shopping_app/ui/shop/display_categories_products.dart';
 final routerConfig =  _buildRouter();
 
@@ -48,6 +49,12 @@ GoRouter _buildRouter() {
         path: Routes.successScreen,
         builder: (context, state) => SuccessScreen(),
       ),
+
+ GoRoute(
+        path: Routes.settings,
+        builder: (context, state) => SettingsScreen(),
+      ),
+
        GoRoute(
         path: Routes.orderDetails,
         builder: (context, state) {
