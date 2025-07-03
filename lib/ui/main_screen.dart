@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/ui/bag/bag_screen.dart';
 import 'package:shopping_app/ui/core/colors/light_color.dart';
+import 'package:shopping_app/ui/favorites/favorites_screen.dart';
 import 'package:shopping_app/ui/home/home_screen.dart';
 import 'package:shopping_app/ui/orders/orders_screen.dart';
-import 'package:shopping_app/ui/profile/favorites_screen.dart';
 import 'package:shopping_app/ui/profile/profile_screen.dart';
 import 'package:shopping_app/ui/shop/shop_screen.dart';
 

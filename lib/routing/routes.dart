@@ -12,6 +12,8 @@ class Routes {
   static const String successScreen = '/successScreen';
   static const String orderDetails = '/orderDetails';
   static const String settings = '/settings'; 
+  static const String changePersonalInfo = '/changePersonalInfo'; 
+  static const String changePassword = '/changePassword'; 
 
 
   
