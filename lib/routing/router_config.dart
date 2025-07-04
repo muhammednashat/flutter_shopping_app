@@ -57,7 +57,10 @@ GoRouter _buildRouter() {
       ),
       GoRoute(
         path: Routes.changePersonalInfo,
-        builder: (context, state) => ChangePersonalInfo(),
+        builder: (context, state) {
+        final user = state.extra as User;
+
+        return  ChangePersonalInfo(user:user);},
       ),
 
       GoRoute(

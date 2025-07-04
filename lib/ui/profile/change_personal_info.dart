@@ -1,14 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/data/model/user.dart';
 import 'package:shopping_app/ui/core/ui/custom_button.dart';
 import 'package:shopping_app/ui/core/ui/custom_text_form_field.dart';
 
 class ChangePersonalInfo extends StatefulWidget {
-  const ChangePersonalInfo({super.key});
+  const ChangePersonalInfo({super.key, required this.user});
+
+  final User user;
+
   @override
   State<ChangePersonalInfo> createState() => _ChangePersonalInfoState();
 }
 
 class _ChangePersonalInfoState extends State<ChangePersonalInfo> {
+  @override
+  void initState() {
+    controllers[0].text = widget.user.name;
+    controllers[1].text = widget.user.email;
+    super.initState();
+  }
+
   final List<TextEditingController> controllers = List.generate(
     3,
     (index) => TextEditingController(),
