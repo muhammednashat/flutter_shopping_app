@@ -54,58 +54,19 @@ class _OrderDetailsState extends State<OrderDetails> {
                 ],
               ),
               SizedBox(height: 16.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text("Order No:", style: TextStyle(color: gray1)),
-                      SizedBox(width: 4),
-                      Text(
-                        (order.id).substring(1, 8),
-                        style: Theme.of(context).textTheme.bodyLarge,
-                      ),
-                    ],
-                  ),
-
-                  Text(
-                    (order.date.toString()).substring(0, 11),
-                    style: TextStyle(color: gray1),
-                  ),
-                ],
+              ItemRow(label: "Order No:", value: (order.id).substring(1, 8)),
+              SizedBox(height: 8.0),
+              ItemRow(
+                label: "Date:",
+                value: (order.date.toString()).substring(0, 11),
               ),
               SizedBox(height: 8.0),
 
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text("Total Amount", style: TextStyle(color: gray1)),
-                      SizedBox(width: 4),
-                      Text(
-                        '${order.totalAmount}\$',
-                        style: Theme.of(context).textTheme.bodyLarge,
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text("Quantity", style: TextStyle(color: gray1)),
-                      SizedBox(width: 4),
-                      Text(
-                        '${order.quantity}',
-                        style: Theme.of(context).textTheme.bodyLarge,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+              ItemRow(label: "Quantity", value: '${order.quantity}'),
+              SizedBox(height: 8.0),
 
-              SizedBox(height: 8),
+              ItemRow(label: "Total Amount", value: '${order.totalAmount}\$'),
+              SizedBox(height: 8.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -115,7 +76,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                   Expanded(
                     child: Text(
                       "FedEx, 3 days, 15\$",
-                      style: Theme.of(context).textTheme.bodyLarge,
+                      style: Theme.of(context).textTheme.titleMedium,
                     ),
                   ),
                 ],
@@ -130,7 +91,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                   Expanded(
                     child: Text(
                       "3 Newbridge Court ,Chino Hills,CA 91709, United States",
-                      style: Theme.of(context).textTheme.bodyLarge,
+                      style: Theme.of(context).textTheme.titleMedium,
                     ),
                   ),
                 ],
@@ -154,6 +115,25 @@ class _OrderDetailsState extends State<OrderDetails> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class ItemRow extends StatelessWidget {
+  final String label;
+  final String value;
+
+  const ItemRow({super.key, required this.label, required this.value});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(label, style: TextStyle(color: gray1)),
+        SizedBox(width: 4),
+        Text(value, style: Theme.of(context).textTheme.titleMedium),
+      ],
     );
   }
 }

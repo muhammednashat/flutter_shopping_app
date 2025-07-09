@@ -23,7 +23,7 @@ class _BagScreenState extends ConsumerState<BagScreen> {
     );
 
     return Scaffold(
-      appBar: AppBar(title: Text('Bag'), centerTitle: true),
+      appBar: AppBar(title: Text('Bag')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Center(
@@ -31,7 +31,27 @@ class _BagScreenState extends ConsumerState<BagScreen> {
             AsyncData(:final value) =>
               (value.status == 200)
                   ? CartItemsWidget(cartResponse: value)
-                  : Center(child: Text(value.msg)),
+                  //child: Text("value.msg")
+                  : Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.remove_shopping_cart,
+                          color: primaryColor,
+                          size: 100.0,
+                        ),
+                        SizedBox(height: 24.0),
+                        Text(
+                          value.msg,
+                          style: Theme.of(
+                            context,
+                          ).textTheme.titleLarge?.copyWith(color: primaryColor),
+                        ),
+                      ],
+                    ),
+                  ),
+
             AsyncError(:final error) => Center(child: Text(error.toString())),
             _ => Center(child: CircularProgressIndicator()),
           },
@@ -60,7 +80,7 @@ class CartItemsWidget extends StatelessWidget {
         ),
 
         SizedBox(height: 24.0),
-
+        Divider(),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -71,17 +91,17 @@ class CartItemsWidget extends StatelessWidget {
               ).textTheme.titleMedium?.copyWith(color: gray1),
             ),
             Text(
-              '${cartResponse.totalPrice}\$',
+              '${(cartResponse.totalPrice)?.toStringAsFixed(2)}\$',
               style: Theme.of(
                 context,
-              ).textTheme.titleMedium?.copyWith(fontSize: 24.0),
+              ).textTheme.titleMedium?.copyWith(fontSize: 20.0),
             ),
           ],
         ),
         CustomElevatedButton(
           text: 'CHECK OUT',
           onPressed: () {
-            context.push(Routes.checkOut,extra: cartResponse);
+            context.push(Routes.checkOut, extra: cartResponse);
           },
         ),
       ],

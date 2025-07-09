@@ -27,13 +27,7 @@ class _CheckOutState extends ConsumerState<CheckOut> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Check Out',
-          style: Theme.of(context).textTheme.headlineLarge,
-        ),
-        centerTitle: true,
-      ),
+      appBar: AppBar(title: Text('Check Out'), centerTitle: true),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -44,13 +38,17 @@ class _CheckOutState extends ConsumerState<CheckOut> {
             AdressSection(),
             SizedBox(height: 42.0),
 
-            ItemRow(lable: "Order", value: "${_cartResponse.totalPrice}\$"),
+            ItemRow(
+              lable: "Order",
+              value: "${(_cartResponse.totalPrice!).toStringAsFixed(2)}\$",
+            ),
             SizedBox(height: 24.0),
             ItemRow(lable: "Delivery", value: "25.0\$"),
             SizedBox(height: 24.0),
             ItemRow(
               lable: "Summary",
-              value: "${(_cartResponse.totalPrice!) + 25.0}\$",
+              value:
+                  "${((_cartResponse.totalPrice!) + 25.0).toStringAsFixed(2)}\$",
             ),
             SizedBox(height: 24.0),
             Expanded(
@@ -88,12 +86,7 @@ class ItemRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          lable,
-          style: Theme.of(
-            context,
-          ).textTheme.titleMedium?.copyWith(color: gray1),
-        ),
+        Text(lable, style: Theme.of(context).textTheme.titleMedium),
         Text(value, style: Theme.of(context).textTheme.titleMedium),
       ],
     );
@@ -163,7 +156,9 @@ class AdressSection extends StatelessWidget {
       children: [
         Text(
           "Shipping address",
-          style: Theme.of(context).textTheme.headlineMedium,
+          style: Theme.of(
+            context,
+          ).textTheme.titleMedium?.copyWith(fontSize: 20.0),
         ),
 
         Card(
@@ -178,15 +173,13 @@ class AdressSection extends StatelessWidget {
                   children: [
                     Text(
                       'Jan done',
-                      style: Theme.of(
-                        context,
-                      ).textTheme.titleSmall?.copyWith(color: blackColor),
+                      style: Theme.of(context).textTheme.titleMedium,
                     ),
                     Text(
                       'Change',
                       style: Theme.of(
                         context,
-                      ).textTheme.titleSmall?.copyWith(color: primaryColor),
+                      ).textTheme.titleMedium?.copyWith(color: primaryColor),
                     ),
                   ],
                 ),

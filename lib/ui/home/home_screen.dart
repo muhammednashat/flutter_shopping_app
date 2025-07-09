@@ -7,16 +7,12 @@ import 'package:shopping_app/utils/util.dart';
 import 'package:shopping_app/utils/utils.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
-  
   const HomeScreen({super.key});
-
   @override
   ConsumerState<HomeScreen> createState() => _HomeScreenState();
 }
 
-
 class _HomeScreenState extends ConsumerState<HomeScreen> {
- 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,8 +28,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-
-                    NewProductsWidget(),                   
+                    SizedBox(
+                      height: 380.0,
+                      child: Center(child: NewProductsWidget()),
+                    ),
                     SizedBox(height: 32.0),
                     SalingProductsWidget(),
                   ],
@@ -45,70 +43,76 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       ),
     );
   }
-
 }
 
 class NewProductsWidget extends ConsumerStatefulWidget {
   const NewProductsWidget({super.key});
 
   @override
-  ConsumerState<NewProductsWidget> createState() => __NewProductsWidgetStateState();
+  ConsumerState<NewProductsWidget> createState() =>
+      __NewProductsWidgetStateState();
 }
 
 class __NewProductsWidgetStateState extends ConsumerState<NewProductsWidget> {
   @override
   Widget build(BuildContext context) {
-    
-   final AsyncValue<List<Product>> products = ref.watch(newProductsProvider);
-   switch(products){
+    final AsyncValue<List<Product>> products = ref.watch(newProductsProvider);
+    switch (products) {
+      case AsyncData(:final value):
+        {
+          myPrint(value.length);
+          return Column(
+            children: [
+              SectionWidget(
+                isNew: true,
+                title: 'New',
+                subTile: 'You\'ve never seen it before',
+                products: value,
+              ),
+            ],
+          );
+        }
 
-    case AsyncData(:final value) :{
-      myPrint(value.length);
-     return Column(
-     children: [
-     SectionWidget(isNew: true,title: 'New', subTile: 'You\'ve never seen it before' , products:value),
-    ],
-    ); 
-    } 
-   
-    case AsyncError(:final error) : return Center(child: Text(error.toString()),);
-    default: return Center(child:  CircularProgressIndicator(),); 
-   } 
- 
+      case AsyncError(:final error):
+        return Center(child: Text(error.toString()));
+      default:
+        return Center(child: CircularProgressIndicator());
+    }
   }
 }
 
-
 class SalingProductsWidget extends ConsumerStatefulWidget {
-  const SalingProductsWidget({
-    super.key,
-  });
+  const SalingProductsWidget({super.key});
 
   @override
-  ConsumerState<SalingProductsWidget> createState() => _SalingProductsWidgetState();
+  ConsumerState<SalingProductsWidget> createState() =>
+      _SalingProductsWidgetState();
 }
 
 class _SalingProductsWidgetState extends ConsumerState<SalingProductsWidget> {
   @override
   Widget build(BuildContext context) {
-   final AsyncValue<List<Product>> products = ref.watch(saleProductsProvider);
-    
+    final AsyncValue<List<Product>> products = ref.watch(saleProductsProvider);
+
     switch (products) {
       case AsyncData(:final value):
-      return Column(
-     children: [
-     SectionWidget(isNew: false,title: 'Sale', subTile: 'Super summer sale' , products:value),
-    ],
-    );       
-    case AsyncError(:final error) :
-    return  Center(child: Text(error.toString()),); 
-      default: return Center(child: CircularProgressIndicator(),);
+        return Column(
+          children: [
+            SectionWidget(
+              isNew: false,
+              title: 'Sale',
+              subTile: 'Super summer sale',
+              products: value,
+            ),
+          ],
+        );
+      case AsyncError(:final error):
+        return Center(child: Text(error.toString()));
+      default:
+        return Center(child: CircularProgressIndicator());
     }
-  
   }
 }
-
-
 
 class PageViewWidget extends StatelessWidget {
   const PageViewWidget({super.key});

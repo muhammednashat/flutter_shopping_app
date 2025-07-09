@@ -8,35 +8,34 @@ class ShopScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-       initialIndex: 0,
+      initialIndex: 0,
       length: 5,
       child: Scaffold(
         appBar: AppBar(
-          centerTitle: true,
           title: Text('Categories'),
-            bottom: TabBar(
-                isScrollable: true,
-              labelColor: primaryColor,
-              indicatorColor: primaryColor,
-              dividerColor: blackColor,
-              indicatorWeight: 16.0,
-              tabs: [
-                Tab(text: 'Men'),
-                Tab(text: 'Boys'),
-                Tab(text: 'Kids'),
-                Tab(text: 'Women'),
-                Tab(text: 'Girls'),
-              ],
-            ),
-            
+          bottom: TabBar(
+            labelStyle: Theme.of(context).textTheme.titleMedium,
+            isScrollable: true,
+            labelColor: primaryColor,
+            indicatorColor: primaryColor,
+            dividerColor: blackColor,
+            indicatorWeight: 8.0,
+            tabs: [
+              Tab(text: 'Men'),
+              Tab(text: 'Boys'),
+              Tab(text: 'Kids'),
+              Tab(text: 'Women'),
+              Tab(text: 'Girls'),
+            ],
+          ),
         ),
-            body: TabBarView(
+        body: TabBarView(
           children: [
-            CategoriesScreen(mainCategory: 'Men',),
-            CategoriesScreen(mainCategory: 'Boys',),
-            CategoriesScreen(mainCategory: 'Kids' ,),
-            CategoriesScreen(mainCategory: 'Girls',),
-            CategoriesScreen(mainCategory: 'Girls',),
+            CategoriesScreen(mainCategory: 'Men'),
+            CategoriesScreen(mainCategory: 'Boys'),
+            CategoriesScreen(mainCategory: 'Kids'),
+            CategoriesScreen(mainCategory: 'Girls'),
+            CategoriesScreen(mainCategory: 'Girls'),
           ],
         ),
       ),

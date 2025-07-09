@@ -67,13 +67,23 @@ class ProductCard extends StatelessWidget {
             ),
 
             SizedBox(height: 8.0),
-                CustomRatingWidget(initialRating: product.rating.toDouble(), numRating:product.numRating),
+            CustomRatingWidget(
+              initialRating: product.rating.toDouble(),
+              numRating: product.numRating,
+            ),
 
             SizedBox(width: 4.0),
-            Text(product.name, style: Theme.of(context).textTheme.titleSmall),
+            Text(
+              product.name,
+              maxLines: 1,
+              overflow: TextOverflow.clip,
+
+              style: Theme.of(context).textTheme.titleSmall,
+            ),
             SizedBox(width: 4.0),
             Text(
               product.brandName,
+
               style: Theme.of(context).textTheme.titleMedium,
             ),
             Row(

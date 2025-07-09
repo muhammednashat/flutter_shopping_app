@@ -47,20 +47,24 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
               ),
             ),
           ),
-          switch (categories) {
-            AsyncData(:final value) => Expanded(
-              child: ListView.builder(
-                itemCount: value.length,
-                itemBuilder: (context, index) {
-                  final category = value[index];
-                  return CategoryItemWidget(category: category);
-                },
+          Expanded(
+            child: Center(child: switch (categories) {
+              AsyncData(:final value) => Expanded(
+                child: ListView.builder(
+                  itemCount: value.length,
+                  itemBuilder: (context, index) {
+                    final category = value[index];
+                    return CategoryItemWidget(category: category);
+                  },
+                ),
               ),
-            ),
+            
+              AsyncError(:final error) => Center(child: Text('$error')),
+              _ => Center(child: CircularProgressIndicator()),
+            },),
+          ),
 
-            AsyncError(:final error) => Center(child: Text('$error')),
-            _ => Center(child: CircularProgressIndicator()),
-          },
+         
         ],
       ),
     );

@@ -3,7 +3,12 @@ import 'package:shopping_app/data/model/responses/cart_item_response.dart';
 import 'package:shopping_app/ui/core/colors/light_color.dart';
 
 class ItemCard extends StatefulWidget {
-  const ItemCard({super.key, required this.item});
+  const ItemCard({
+    super.key,
+    required this.item,
+    this.shouldShowMoreIcon = false,
+  });
+  final bool shouldShowMoreIcon;
   final CartItemResponse item;
   @override
   State<ItemCard> createState() => _ItemCardState();
@@ -11,7 +16,6 @@ class ItemCard extends StatefulWidget {
 
 class _ItemCardState extends State<ItemCard> {
   late CartItemResponse _item;
-
   @override
   void initState() {
     _item = widget.item;
@@ -24,32 +28,42 @@ class _ItemCardState extends State<ItemCard> {
       color: Colors.white,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
-
         children: [
           Flexible(
             flex: 1,
-            child: Image.network(_item.imageUrl, width: 130, height: 130),
+            child: Image.network(
+              _item.imageUrl,
+              width: 130,
+              fit: BoxFit.cover,
+
+              height: 130,
+            ),
           ),
           SizedBox(width: 4.0),
           Flexible(
             flex: 2,
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(16.0),
               child: Column(
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        _item.name!,
-                        style: Theme.of(context).textTheme.titleMedium,
+                      Expanded(
+                        child: Text(
+                          _item.name!,
+                          overflow: TextOverflow.ellipsis,
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
                       ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.more_vert_outlined, color: gray1),
-                      ),
+                      if (widget.shouldShowMoreIcon)
+                        IconButton(
+                          onPressed: () {},
+                          icon: Icon(Icons.more_vert_outlined, color: gray1),
+                        ),
                     ],
                   ),
+                  SizedBox(height: 8.0),
                   Row(
                     children: [
                       Text("Size"),
@@ -67,7 +81,7 @@ class _ItemCardState extends State<ItemCard> {
                         '${_item.salePrice}\$',
                         style: Theme.of(
                           context,
-                        ).textTheme.titleMedium?.copyWith(fontSize: 24.0),
+                        ).textTheme.titleMedium?.copyWith(fontSize: 20.0),
                       ),
                       // Row(
                       //   children: [

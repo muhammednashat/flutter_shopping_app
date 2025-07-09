@@ -1,20 +1,16 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shopping_app/config/dependences.dart';
 import 'package:shopping_app/data/model/new_cart_item.dart';
 import 'package:shopping_app/data/model/product.dart';
-import 'package:shopping_app/data/model/responses/orders_response.dart';
 import 'package:shopping_app/data/repositories/cart_repo.dart';
 import 'package:shopping_app/routing/routes.dart';
 import 'package:shopping_app/ui/core/colors/light_color.dart';
 import 'package:shopping_app/ui/core/ui/custom_button.dart';
 import 'package:shopping_app/ui/core/ui/favorite_button.dart';
 import 'package:shopping_app/ui/core/ui/rating_widget.dart';
-import 'package:shopping_app/utils/constants.dart';
 import 'package:shopping_app/utils/util.dart';
-import 'package:shopping_app/utils/utils.dart';
 
 class DisplayProdcut extends ConsumerStatefulWidget {
   const DisplayProdcut({super.key, required this.product});
@@ -39,13 +35,7 @@ class _DisplayProdcutState extends ConsumerState<DisplayProdcut> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          _product.name,
-          style: Theme.of(context).textTheme.headlineLarge,
-        ),
-      ),
+      appBar: AppBar(title: Text(_product.name)),
       body: Column(
         children: [
           Expanded(
@@ -107,11 +97,11 @@ class _DisplayProdcutState extends ConsumerState<DisplayProdcut> {
                           children: [
                             Text(
                               _product.name,
-                              style: Theme.of(context).textTheme.headlineLarge,
+                              style: Theme.of(context).textTheme.titleMedium,
                             ),
                             Text(
                               '\$${_product.salePrice}',
-                              style: Theme.of(context).textTheme.headlineLarge,
+                              style: Theme.of(context).textTheme.titleMedium,
                             ),
                           ],
                         ),
@@ -161,8 +151,6 @@ class _DisplayProdcutState extends ConsumerState<DisplayProdcut> {
       ),
     );
   }
-
-
 
   Future<NewCartItem> _newCartItem() async {
     final user = await ref.read(userBoxCollictionProvider);
@@ -218,7 +206,7 @@ class SizeItemWidget extends StatelessWidget {
           child: Center(
             child: Text(
               size,
-              style: Theme.of(context).textTheme.headlineMedium,
+              style: Theme.of(context).textTheme.titleMedium,
               textAlign: TextAlign.center,
             ),
           ),

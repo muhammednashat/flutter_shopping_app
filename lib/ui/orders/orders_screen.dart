@@ -14,19 +14,19 @@ class _OrdersState extends ConsumerState<OrdersScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Orders"), centerTitle: true),
+      appBar: AppBar(title: Text("Orders")),
       body: DefaultTabController(
         length: 3,
         child: Column(
           children: [
             TabBar(
-              labelPadding: EdgeInsets.symmetric(horizontal: 18.0),
-              labelColor: Colors.white,
-              unselectedLabelColor: blackColor,
-              indicator: BoxDecoration(
-                color: Colors.black,
-                borderRadius: BorderRadius.circular(20),
-              ),
+              labelStyle: Theme.of(context).textTheme.titleMedium,
+              isScrollable: true,
+              labelColor: primaryColor,
+              indicatorColor: primaryColor,
+              dividerColor: blackColor,
+              indicatorWeight: 8.0,
+
               tabs: [
                 Tab(text: 'Delivered'),
                 Tab(text: 'Processing'),
