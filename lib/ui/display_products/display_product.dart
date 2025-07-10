@@ -155,7 +155,7 @@ class _DisplayProdcutState extends ConsumerState<DisplayProdcut> {
   Future<NewCartItem> _newCartItem() async {
     final user = await ref.read(userBoxCollictionProvider);
     return NewCartItem(
-      userId: user.id,
+      userId: user.value?.id ?? "",
       productId: _product.id,
       size: _selectedSize,
       quantity: 1,

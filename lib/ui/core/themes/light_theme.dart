@@ -18,7 +18,6 @@ ThemeData _buildLightTheme() {
         fontSize: 24,
         fontWeight: FontWeight.bold,
         color: blackColor,
-
       ),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
@@ -32,7 +31,7 @@ ThemeData _buildLightTheme() {
         foregroundColor: Colors.white,
       ),
     ),
-
+    progressIndicatorTheme: ProgressIndicatorThemeData(color: primaryColor),
     inputDecorationTheme: InputDecorationTheme(
       fillColor: Colors.white,
       filled: true,

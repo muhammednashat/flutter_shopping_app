@@ -31,7 +31,7 @@ final boxCollectionProvider = FutureProvider<BoxCollection>((ref) async {
   return collection;
 });
 
-final userBoxCollictionProvider = Provider((ref) async {
+final userBoxCollictionProvider = FutureProvider((ref) async {
   final boxCollection = await ref.watch(boxCollectionProvider.future);
   final useresBox = await boxCollection.openBox('useres');
   return await useresBox.get('user') as User;

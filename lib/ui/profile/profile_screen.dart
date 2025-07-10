@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shopping_app/config/dependences.dart';
 import 'package:shopping_app/routing/routes.dart';
+import 'package:shopping_app/ui/core/colors/light_color.dart';
 import 'package:shopping_app/utils/util.dart';
 
 class ProfileScreen extends ConsumerStatefulWidget {
@@ -15,6 +16,14 @@ class ProfileScreen extends ConsumerStatefulWidget {
 class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
+    final userAsync = ref.watch(userBoxCollictionProvider);
+    if (userAsync is AsyncLoading) {
+      return Center(child: CircularProgressIndicator());
+    }
+
+    if (userAsync is AsyncError) {
+      return Center(child: Text('Error loading user'));
+    }
     return Scaffold(
       appBar: AppBar(title: Text('My Profile')),
       body: Padding(
@@ -23,15 +32,16 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ListTile(
-              title: Text("Meta Lab"),
-              subtitle: Text("asfdsj@gmail.com"),
-              leading: ClipRRect(
-                borderRadius: BorderRadius.circular(70.0),
-                child: Image.asset(
-                  getImagePath("image.jpeg"),
-                  width: 90.0,
-                  height: 90.0,
-                ),
+              title: Text(
+                userAsync.value!.name,
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontSize: 20.0),
+              ),
+              subtitle: Text(userAsync.value!.email),
+              leading: CircleAvatar(
+                radius: 45,
+                backgroundImage: AssetImage(getImagePath("image.jpeg"), ),
               ),
             ),
             SizedBox(height: 24.0),
@@ -59,9 +69,12 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
               onTap: () {
                 _navitateToSettingsScreen();
               },
-              title: Text("Settings"),
+              title: Text(
+                "Settings",
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
               subtitle: Text("Name, Email,..."),
-              trailing: Icon(Icons.arrow_forward_ios),
+              trailing: Icon(Icons.arrow_forward_ios, color: gray1),
             ),
 
             SizedBox(height: 24.0),
@@ -71,11 +84,9 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     );
   }
 
-  _navitateToSettingsScreen()async{
-
+  _navitateToSettingsScreen() async {
     final user = await ref.read(userBoxCollictionProvider);
-                context.push(Routes.settings, extra: user);
-
+    context.push(Routes.settings, extra: user);
   }
 }
 
@@ -96,9 +107,9 @@ class ItemRow extends StatelessWidget {
       onTap: () {
         context.push(distination);
       },
-      title: Text(title),
+      title: Text(title, style: Theme.of(context).textTheme.titleMedium),
       subtitle: Text(subTitle),
-      trailing: Icon(Icons.arrow_forward_ios),
+      trailing: Icon(Icons.arrow_forward_ios, color: gray1),
     );
   }
 }
