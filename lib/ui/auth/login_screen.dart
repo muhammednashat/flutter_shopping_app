@@ -25,18 +25,13 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(() {
+      appBar: CustomAppBar('Log In', () {
         context.pop();
       }),
       body: Padding(
         padding: EdgeInsets.all(16.0),
         child: Column(
           children: [
-            Row(
-              children: [
-                Text('Login', style: Theme.of(context).textTheme.headlineLarge),
-              ],
-            ),
             SizedBox(height: 50),
             Form(
               key: _formKey,
@@ -74,15 +69,21 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 children: [
                   Text(
                     'Forgot your password',
-                    style: Theme.of(context).textTheme.titleSmall,
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   SizedBox(height: 3),
-                  Image.asset(getIconPath('arrow.png')),
+                  Image.asset(
+                    getIconPath('arrow.png'),
+                    fit: BoxFit.cover,
+                    width: 30.0,
+                    height: 30.0,
+                  ),
                 ],
               ),
             ),
-
-            LineAtBottom(),
           ],
         ),
       ),

@@ -6,6 +6,7 @@ import 'package:shopping_app/routing/routes.dart';
 import 'package:shopping_app/ui/core/ui/custom_app_bar.dart';
 import 'package:shopping_app/ui/core/ui/custom_button.dart';
 import 'package:shopping_app/ui/core/ui/custom_text_form_field.dart';
+import 'package:shopping_app/ui/core/ui/loading_indecator.dart';
 import 'package:shopping_app/utils/result.dart';
 import 'package:shopping_app/utils/util.dart';
 
@@ -17,87 +18,99 @@ class SignupScreen extends ConsumerStatefulWidget {
 }
 
 class _SignupScreenState extends ConsumerState<SignupScreen> {
+  var isLoading = false;
+
   final _formKey = GlobalKey<FormState>();
   final _controllers = List.generate(3, (index) => TextEditingController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(() {
+      appBar: CustomAppBar("Sign Up", () {
         context.canPop();
       }),
-      body: Column(
+      body: Stack(
         children: [
-          Row(
+          Column(
             children: [
-              Text('Sign up', style: Theme.of(context).textTheme.headlineLarge),
-            ],
-          ),
-          SizedBox(height: 50),
-          Expanded(
-            child: Container(
-              child: Form(
-                key: _formKey,
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      CustomTextFormField(
-                        validator: (value) {
-                          if (value?.isEmpty == true) {
-                            return 'name is required';
-                          }
-                          return null;
-                        },
-                        label: 'Name',
-                        controller: _controllers[0],
-                      ),
-                      SizedBox(height: 4),
-                      CustomTextFormField(
-                        validator: emailValidation,
-                        label: 'Email',
-                        controller: _controllers[1],
-                      ),
-                      SizedBox(height: 4),
-                      CustomTextFormField(
-                        validator: passwordValidation,
-                        label: 'Password',
-                        controller: _controllers[2],
-                      ),
-                      SizedBox(height: 32),
-                      CustomElevatedButton(
-                        text: 'SIGN UP',
-                        onPressed: () {
-                          if (_isValidate()) {
-                            _onpressed(context);
-                            // print(  authRepo.register());
-                          }
-                        },
-                      ),
+              SizedBox(height: 50),
+              Expanded(
+                child: Container(
+                  child: Form(
+                    key: _formKey,
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          CustomTextFormField(
+                            validator: (value) {
+                              if (value?.isEmpty == true) {
+                                return 'name is required';
+                              }
+                              return null;
+                            },
+                            label: 'Name',
+                            controller: _controllers[0],
+                          ),
+                          SizedBox(height: 4),
+                          CustomTextFormField(
+                            validator: emailValidation,
+                            label: 'Email',
+                            controller: _controllers[1],
+                          ),
+                          SizedBox(height: 4),
+                          CustomTextFormField(
+                            validator: passwordValidation,
+                            label: 'Password',
+                            controller: _controllers[2],
+                          ),
+                          SizedBox(height: 32),
+                          CustomElevatedButton(
+                            text: 'SIGN UP',
+                            onPressed: () {
+                              if (_isValidate()) {
+                                _onpressed(context);
+                                // print(  authRepo.register());
+                              }
+                            },
+                          ),
 
-                      SizedBox(height: 4),
+                          SizedBox(height: 4),
 
-                      GestureDetector(
-                        onTap: () => context.push(Routes.login),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Already have an account',
-                              style: Theme.of(context).textTheme.titleSmall,
+                          GestureDetector(
+                            onTap: () => context.push(Routes.login),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Already have an account',
+                                  style: Theme.of(
+                                    context,
+                                  ).textTheme.titleMedium?.copyWith(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(height: 3),
+                                Image.asset(
+                                  getIconPath('arrow.png'),
+                                  fit: BoxFit.cover,
+                                  width: 30.0,
+                                  height: 30.0,
+                                ),
+                              ],
                             ),
-                            SizedBox(height: 3),
-                            Image.asset(getIconPath('arrow.png')),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-
-                      //  LineAtBottom()
-                    ],
+                    ),
                   ),
                 ),
               ),
-            ),
+            ],
           ),
+
+          if (isLoading)
+           LoadingIndicator()
         ],
       ),
     );
@@ -108,13 +121,16 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
   _isValidate() => true;
 
   void _onpressed(BuildContext context) {
-    final name = _controllers[0].text;
-    final email = _controllers[1].text;
-    final password = _controllers[2].text;
+    setState(() {
+    isLoading = true;
+    });
+    // final name = _controllers[0].text;
+    // final email = _controllers[1].text;
+    // final password = _controllers[2].text;
 
-    // final name = 'namw';
-    // final email = 'asdf@gmail.com';
-    // final password = '123456789';
+    final name = 'namwg';
+    final email = 'asdff@gmail.com';
+    final password = '123456789';
 
     request(context, email, password, name);
   }
@@ -127,21 +143,20 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
   ) async {
     print('----------------------------------------------------');
     final repo = await ref.read(authRepoProvider.future);
-
     final result = await repo.register(email, password, name);
+     setState(() {
+    isLoading = false;
+    });
     switch (result) {
       case Ok():
         {
-          print(result.value);
+          showToast(result.value);
           context.go(Routes.mainScreen);
         }
       case Error():
         {
-          print(result.error);
+          showToast(result.error.toString());
         }
     }
-    print(result);
-    // print(response.data);
-    print('----------------------------------------------------');
   }
 }
