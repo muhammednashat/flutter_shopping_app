@@ -53,15 +53,14 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
     final isLogged = await appData.get('isLogged') ?? false;
     print(isLogged);
     await Future.delayed(Durations.medium3);
-      context.go(Routes.signup);
 
-    // print('delayed');
-    // if (isLogged) {
-    //   print('home');
-    //   context.go(Routes.mainScreen);
-    // } else {
-    //   print('singUp');
-    //   context.go(Routes.signup);
-    // }
+    print('delayed');
+    if (isLogged) {
+      print('home');
+      context.go(Routes.mainScreen);
+    } else {
+      print('singUp');
+      context.go(Routes.signup);
+    }
   }
 }

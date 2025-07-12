@@ -19,7 +19,7 @@ class _BagScreenState extends ConsumerState<BagScreen> {
   @override
   Widget build(BuildContext context) {
     final cartResponse = ref.watch(
-      fetchCartItemsProvider("685bbc9dcc011d99438160e8"),
+      fetchCartItemsProvider,
     );
 
     return Scaffold(

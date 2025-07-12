@@ -11,6 +11,7 @@ import 'package:shopping_app/ui/core/ui/custom_button.dart';
 import 'package:shopping_app/ui/core/ui/favorite_button.dart';
 import 'package:shopping_app/ui/core/ui/rating_widget.dart';
 import 'package:shopping_app/utils/util.dart';
+import 'package:shopping_app/utils/utils.dart';
 
 class DisplayProdcut extends ConsumerStatefulWidget {
   const DisplayProdcut({super.key, required this.product});
@@ -153,9 +154,10 @@ class _DisplayProdcutState extends ConsumerState<DisplayProdcut> {
   }
 
   Future<NewCartItem> _newCartItem() async {
-    final user = await ref.read(userBoxCollictionProvider);
+    final user = await ref.read(userProvider);
+    myPrint("usr id is  => ${user.id}");
     return NewCartItem(
-      userId: user.value?.id ?? "",
+      userId: user.id,
       productId: _product.id,
       size: _selectedSize,
       quantity: 1,

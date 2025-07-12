@@ -3,8 +3,6 @@ import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shopping_app/data/model/category.dart';
 import 'package:shopping_app/data/model/product.dart';
-import 'package:shopping_app/data/model/responses/cart_item_response.dart';
-import 'package:shopping_app/data/model/responses/cart_response.dart';
 import 'package:shopping_app/data/model/responses/orders_response.dart';
 import 'package:shopping_app/data/model/user.dart';
 import 'package:shopping_app/data/repositories/authRepo.dart';
@@ -17,6 +15,7 @@ import 'package:shopping_app/data/services/api/cart_service.dart';
 import 'package:shopping_app/data/services/api/ordersService.dart';
 import 'package:shopping_app/data/services/api/products_service.dart';
 import 'package:shopping_app/data/services/api/category_service.dart';
+import 'package:shopping_app/utils/utils.dart';
 
 final boxCollectionProvider = FutureProvider<BoxCollection>((ref) async {
   final dir = await getApplicationDocumentsDirectory();
@@ -37,14 +36,18 @@ final userBoxCollictionProvider = FutureProvider((ref) async {
   return await useresBox.get('user') as User;
 });
 
+final userProvider = Provider((ref) async {
+  final boxCollection = await ref.watch(boxCollectionProvider.future);
+  final useresBox = await boxCollection.openBox('useres');
+  return await useresBox.get('user') as User;
+});
+
 // Services
 final authServiceProvider = Provider((ref) => Authservice());
 final productServiceProvider = Provider((ref) => ProductService());
 final categoryServiceProvider = Provider((ref) => CategoryService());
 final cartServiceProvider = Provider((ref) => CartService());
-final orderServiceProvider = Provider((ref)=> OrdersService());
-
-
+final orderServiceProvider = Provider((ref) => OrdersService());
 
 // Repos
 
@@ -69,16 +72,10 @@ final cartRepoProvider = Provider((ref) {
   return CartRepo(service: service);
 });
 
-final ordersRepoProvider = Provider((ref){
+final ordersRepoProvider = Provider((ref) {
   final ordersService = ref.watch(orderServiceProvider);
   return OrdersRepo(ordersService: ordersService);
 });
-
-
-
-
-
-
 
 // Future Apis
 final saleProductsProvider = FutureProvider((ref) {
@@ -103,16 +100,20 @@ final categoriesByCategoryProvider =
       return repo.getCategoriesByCategory(mainCategory);
     });
 
-final fetchCartItemsProvider = FutureProvider.autoDispose
-    .family<CartResponse, String>((ref, userId) async {
-      final cartRepo = ref.watch(cartRepoProvider);
-      return cartRepo.fetchCartItems(userId);
-    });
-
-final getOrdersByStatusProvider = FutureProvider
-.autoDispose
-.family<List<OrdersResponse> , Map<String,dynamic>>((ref, data){
-final cartRepo = ref.watch(ordersRepoProvider);
-      return cartRepo.getOrderByStatus(data);
+final fetchCartItemsProvider = FutureProvider.autoDispose((ref) async {
+  final cartRepo = ref.watch(cartRepoProvider);
+  final user = await ref.watch(userProvider);
+  myPrint(user.id);
+  return cartRepo.fetchCartItems(user.id);
 });
 
+final getOrdersByStatusProvider = FutureProvider.autoDispose
+    .family<List<OrdersResponse>, String>((ref, status) async {
+      final user = await ref.watch(userProvider);
+      final data = {"userId": user.id, "status": status};
+      myPrint("fdsf");
+      myPrint(data.toString());
+
+      final cartRepo = ref.watch(ordersRepoProvider);
+      return cartRepo.getOrderByStatus(data);
+    });

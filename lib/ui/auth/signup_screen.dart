@@ -109,28 +109,27 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
             ],
           ),
 
-          if (isLoading)
-           LoadingIndicator()
+          if (isLoading) LoadingIndicator(),
         ],
       ),
     );
   }
 
-  // _isValidate() => (_formKey.currentState?.validate());
+  _isValidate() => (_formKey.currentState?.validate());
 
-  _isValidate() => true;
+  // _isValidate() => true;
 
   void _onpressed(BuildContext context) {
     setState(() {
-    isLoading = true;
+      isLoading = true;
     });
-    // final name = _controllers[0].text;
-    // final email = _controllers[1].text;
-    // final password = _controllers[2].text;
+    final name = _controllers[0].text;
+    final email = _controllers[1].text;
+    final password = _controllers[2].text;
 
-    final name = 'namwg';
-    final email = 'asdff@gmail.com';
-    final password = '123456789';
+    // final name = 'namwg';
+    // final email = 'asdff@gmail.com';
+    // final password = '123456789';
 
     request(context, email, password, name);
   }
@@ -144,13 +143,13 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
     print('----------------------------------------------------');
     final repo = await ref.read(authRepoProvider.future);
     final result = await repo.register(email, password, name);
-     setState(() {
-    isLoading = false;
+    setState(() {
+      isLoading = false;
     });
     switch (result) {
       case Ok():
         {
-          showToast(result.value);
+          showToast("Welcome");
           context.go(Routes.mainScreen);
         }
       case Error():

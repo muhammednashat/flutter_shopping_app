@@ -7,6 +7,7 @@ import 'package:shopping_app/routing/routes.dart';
 import 'package:shopping_app/ui/core/colors/light_color.dart';
 import 'package:shopping_app/ui/core/ui/custom_button.dart';
 import 'package:shopping_app/utils/util.dart';
+import 'package:shopping_app/utils/utils.dart';
 
 class CheckOut extends ConsumerStatefulWidget {
   final CartResponse cartResponse;
@@ -70,7 +71,9 @@ class _CheckOutState extends ConsumerState<CheckOut> {
 
   _onSubmitPressed() async {
     final orderRepo = ref.read(ordersRepoProvider);
-    await orderRepo.submitOrder("685bbc9dcc011d99438160e8");
+    final user = await ref.read(userProvider);
+    myPrint(user.id);
+    await orderRepo.submitOrder(user.id);
     context.push(Routes.successScreen);
   }
 }

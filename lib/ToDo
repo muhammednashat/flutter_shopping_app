@@ -1,8 +1,5 @@
 /*
-*(use User to aasign data to text controllers in the conctructor )
-settings Screen
-update info api 
-update password
-add to favorite
+* add loading indecator into log in and forgot 
+* implement forgat password
 
 /

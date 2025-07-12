@@ -14,11 +14,11 @@ class OrdersWidget extends ConsumerStatefulWidget {
 }
 
 class _OrdersWidgetState extends ConsumerState<OrdersWidget> {
-  late Map<String, dynamic> data;
+  late String data;
 
   @override
   void initState() {
-    data = {"userId": "685bbc9dcc011d99438160e8", "status": widget.status};
+    data = widget.status;
     super.initState();
   }
 

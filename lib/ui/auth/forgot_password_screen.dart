@@ -20,8 +20,6 @@ class ForgotPasswordScreen extends StatelessWidget {
         padding: EdgeInsets.all(16.0),
         child: Stack(
           children: [
-
-         
          Column(
             children: [
               SizedBox(height: 50),

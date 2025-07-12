@@ -29,7 +29,6 @@ class User {
   Map<String, Object> toJson() => {
         "name": name,
         "email": email,
- 
         "phone": phone,
         "address": address,
         "id":id
