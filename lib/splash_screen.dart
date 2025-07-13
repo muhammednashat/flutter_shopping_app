@@ -39,7 +39,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
             const SizedBox(height: 8),
             const Text(
               "Shop for everything you need.",
-              style: TextStyle(fontSize: 16, color: primaryColor),
+              style: TextStyle(fontSize: 16, color: blackColor),
             ),
           ],
         ),

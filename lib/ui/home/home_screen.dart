@@ -16,29 +16,27 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: 150, child: PageViewWidget()),
-              SizedBox(height: 24),
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      height: 380.0,
-                      child: Center(child: NewProductsWidget()),
-                    ),
-                    SizedBox(height: 32.0),
-                    SalingProductsWidget(),
-                  ],
-                ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 250, child: PageViewWidget()),
+            SizedBox(height: 24),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: 380.0,
+                    child: Center(child: NewProductsWidget()),
+                  ),
+                  SizedBox(height: 32.0),
+                  SalingProductsWidget(),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -121,12 +119,11 @@ class PageViewWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageView(
       children: [
-        Image.asset(getImagePath('bags.png')),
-        Image.asset(getImagePath('bags.png')),
-        Image.asset(getImagePath('bags.png')),
-        Image.asset(getImagePath('bags.png')),
-        Image.asset(getImagePath('bags.png')),
-        Image.asset(getImagePath('bags.png')),
+        Image.asset(getImagePath('super_sale.jpeg'), fit: BoxFit.fill),
+
+        Image.asset(getImagePath('black_friday.jpg'), fit: BoxFit.cover),
+        Image.asset(getImagePath('free_delevey.jpg'), fit: BoxFit.cover),
+        Image.asset(getImagePath('mega_sale.jpg'), fit: BoxFit.cover),
       ],
     );
   }
