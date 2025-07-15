@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shopping_app/config/dependences.dart';
+import 'package:shopping_app/ui/core/colors/light_color.dart';
 import 'package:shopping_app/ui/orders/order_item_card.dart';
 import 'package:shopping_app/utils/utils.dart';
 
@@ -36,14 +37,32 @@ class _OrdersWidgetState extends ConsumerState<OrdersWidget> {
       data:
           (orders) =>
               orders.isEmpty
-                  ? const Center(child: Text('No orders found'))
+                  ? Center(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          Icons.assignment_outlined,
+                          size: 64,
+                          color: primaryColor,
+                        ),
+                        SizedBox(height: 16),
+                        Text(
+                          'No orders found',
+                          style: Theme.of(
+                            context,
+                          ).textTheme.titleLarge?.copyWith(color: primaryColor),
+                        ),
+                      ],
+                    ),
+                  )
                   : Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: ListView.builder(
                       itemCount: orders.length,
                       itemBuilder: (context, index) {
                         final order = orders[index];
-                        return OrderItemCard(order: order,);
+                        return OrderItemCard(order: order);
                       },
                     ),
                   ),

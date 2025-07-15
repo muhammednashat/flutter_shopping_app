@@ -15,64 +15,59 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  int currentIndex = 0;
 
-  var currentIndex = 0;
-   final List<Widget> _widgets = [
+  final List<Widget> _screens = [
     HomeScreen(),
     ShopScreen(),
     BagScreen(),
     OrdersScreen(),
     FavoritesScreen(),
     ProfileScreen(),
-   ];
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-body: Center(child: _widgets.elementAt(currentIndex)),
-
+      body: IndexedStack(
+        index: currentIndex,
+        children: _screens,
+      ),
       bottomNavigationBar: BottomNavigationBar(
-     
-    currentIndex: currentIndex,
-    
-        onTap: (value) {
-          setState(() {
-            currentIndex = value;
-          });
-        },
-        selectedItemColor: Colors.red, // Active icon color
-        unselectedItemColor: gray1, // Inactive icon color
-        showSelectedLabels: true,
-        showUnselectedLabels: true,
-        type: BottomNavigationBarType.fixed, // Ensures labels are always visible
+        currentIndex: currentIndex,
+        onTap: (value) => setState(() => currentIndex = value),
+        selectedItemColor: Colors.red,
+        unselectedItemColor: gray1,
+        selectedFontSize: 12,
+        unselectedFontSize: 11,
+        type: BottomNavigationBarType.shifting,
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.home, size: 26),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_bag_outlined),
+            icon: Icon(Icons.shopping_bag_outlined, size: 26),
             label: 'Shop',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart_outlined),
+            icon: Icon(Icons.shopping_cart_outlined, size: 26),
             label: 'Bag',
           ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.receipt),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.receipt_long, size: 26),
             label: 'Orders',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.favorite_border),
+            icon: Icon(Icons.favorite_border, size: 26),
             label: 'Favorites',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline),
+            icon: Icon(Icons.person_outline, size: 26),
             label: 'Profile',
           ),
         ],
-        
-        ),
+      ),
     );
   }
 }
