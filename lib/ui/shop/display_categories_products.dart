@@ -22,8 +22,8 @@ class _DisplayCategoriesProductsState
   void initState() {
     _category = widget.category;
     query = {
-        "mainCategory": _category.mainCategory,
-        "subCategory": _category.subCategory,
+        "mainCategory": _category.mainCategory.toLowerCase(),
+        "subCategory": _category.subCategory.toLowerCase(),
       };
     super.initState();
   }
