@@ -66,4 +66,7 @@ A full-stack E-commerce application built with **Flutter**, **Node.js**, and **M
 📸 Screenshots
 
  ![](lib/config/assets/images/bags.png)
+ ![](lib/config/assets/screens/photo_2025-07-22_12-20-35)
+
+ 
   
