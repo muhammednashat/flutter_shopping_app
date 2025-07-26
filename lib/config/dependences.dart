@@ -101,6 +101,7 @@ final categoriesByCategoryProvider =
     });
 
 final fetchCartItemsProvider = FutureProvider.autoDispose((ref) async {
+  print("-----------------------&&&&&&&&&&&&&&----------------*************");
   final cartRepo = ref.watch(cartRepoProvider);
   final user = await ref.watch(userProvider);
   myPrint(user.id);

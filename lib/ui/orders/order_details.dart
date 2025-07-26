@@ -90,7 +90,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                   SizedBox(width: 24),
                   Expanded(
                     child: Text(
-                      "3 Newbridge Court ,Chino Hills,CA 91709, United States",
+                      order.shippingAddress,
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
                   ),

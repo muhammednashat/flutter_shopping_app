@@ -97,7 +97,7 @@ class ProductCard extends StatelessWidget {
                 ),
                 SizedBox(width: 4.0),
                 Text(
-                  '${product.salePrice}\$',
+                  '${product.salePrice.toStringAsFixed(2)}\$',
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     color: primaryColor,

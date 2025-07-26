@@ -72,7 +72,7 @@ class _CheckOutState extends ConsumerState<CheckOut> {
   _onSubmitPressed() async {
     final orderRepo = ref.read(ordersRepoProvider);
     final user = await ref.read(userProvider);
-    myPrint(user.id);
+    myPrint("usr id is  => ${user.id}");
     await orderRepo.submitOrder(user.id);
     context.push(Routes.successScreen);
   }
@@ -175,7 +175,7 @@ class AdressSection extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Jan done',
+                      'Mohammed Nashat',
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
                     Text(
@@ -188,9 +188,7 @@ class AdressSection extends StatelessWidget {
                 ),
 
                 SizedBox(height: 8.0),
-                Text(
-                  '3 Newbridge Court \nChino Hills, CA 91709, United States',
-                ),
+                Text('15 Salah Salem Street, \n Nasr City, Cairo, Egypt'),
               ],
             ),
           ),

@@ -26,8 +26,9 @@ class CartRepo {
   }
 
   Future<CartResponse> fetchCartItems(String userId) async {
+
     try {
-      final response = await service.getCartItems(userId);
+      final response = await service.getCartItems("687228432fe6bd22da925bdf");
       myPrint(response);
       final json = response.data as Map<String, dynamic>;
       myPrint("CartResponse");

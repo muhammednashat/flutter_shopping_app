@@ -16,6 +16,7 @@ String? emailValidation(String? value) {
 String getImagePath(String image) {
   return 'lib/config/assets/images/$image';
 }
+
 String getIconPath(String image) {
   return 'lib/config/assets/icons/$image';
 }
