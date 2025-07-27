@@ -65,8 +65,10 @@ A full-stack E-commerce application built with **Flutter**, **Node.js**, and **M
 
 📸 Screenshots
 
-  <img src="https://github.com/user-attachments/assets/8e2e5f91-19ce-4a37-805e-25754bb3c74e"  width="40" height="40"/>
-
+  <img src="https://github.com/user-attachments/assets/b6dc8d06-cc0f-4bf8-8d3a-43faa37573a2"  width="100" height="200"/>
+  <img src="https://github.com/user-attachments/assets/23ae105b-a4f3-4176-bb44-fc90fa67e98b"  width="100" height="200"/>
+  
+  
 
 ![photo_2025-07-22_12-21-04](https://github.com/user-attachments/assets/a1c6f406-0d84-4321-b9e9-336e98576eb7)
 ![photo_2025-07-22_12-21-01](https://github.com/user-attachments/assets/98b1ee3e-29d2-4745-a0be-08d3973cbbdb)
@@ -83,8 +85,7 @@ A full-stack E-commerce application built with **Flutter**, **Node.js**, and **M
 ![photo_2025-07-22_12-20-45](https://github.com/user-attachments/assets/cfbaa245-f6b9-430e-8b55-361b81982b06)
 ![photo_2025-07-22_12-20-44](https://github.com/user-attachments/assets/66b65d90-359c-4d27-a215-2dfa6f558b07)
 ![photo_2025-07-22_12-20-43](https://github.com/user-attachments/assets/de17d8c4-d1fd-4e11-afc9-76ff92837ae9)
-![photo_2025-07-22_12-20-39](https://github.com/user-attachments/assets/b6dc8d06-cc0f-4bf8-8d3a-43faa37573a2)
-![photo_2025-07-22_12-20-38](https://github.com/user-attachments/assets/23ae105b-a4f3-4176-bb44-fc90fa67e98b)
+
 ![photo_2025-07-22_12-21-12](https://github.com/user-attachments/assets/61168293-8d24-4dbc-b398-552d3d5916bb)
 ![photo_2025-07-22_12-21-10](https://github.com/user-attachments/assets/8e2e5f91-19ce-4a37-805e-25754bb3c74e)
 
