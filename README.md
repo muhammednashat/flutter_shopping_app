@@ -54,7 +54,7 @@ A full-stack E-commerce application built with **Flutter**, **Node.js**, and **M
 - Node.js + MongoDB installed locally or configured remotely
 
 ### Backend Setup
-- git clone https://github.com/your-username/shopping-app-backend
+- git clone [https://github.com/your-username/shopping-app-backend](https://github.com/muhammednashat/server_shopping_app)
 - cd shopping-app-backend
 - npm install
 - npm start
