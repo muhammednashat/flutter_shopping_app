@@ -66,10 +66,9 @@ A full-stack E-commerce application built with **Flutter**, **Node.js**, and **M
 📸 Screenshots
  <img src="![photo_2025-07-22_12-20-35](https://github.com/user-attachments/assets/1941b4bc-7995-4517-b492-128f874165c1)
 " alt="nodejs" width="40" height="40"/> 
+![photo_2025-07-22_12-20-35](https://github.com/user-attachments/assets/99c4e660-36ff-40d0-903f-7b30e0362f86)
 
- ![](lib/config/assets/screens/photo_2025-07-22_12-20-35.jpg)
- ![](lib/config/assets/screens/photo_2025-07-22_12-20-38.jpg)
- ![](lib/config/assets/screens/photo_2025-07-22_12-20-39.jpg)
+
  ![](lib/config/assets/screens/photo_2025-07-22_12-20-43.jpg)
  ![]()
  ![]()
