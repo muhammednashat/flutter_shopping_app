@@ -65,31 +65,30 @@ A full-stack E-commerce application built with **Flutter**, **Node.js**, and **M
 
 📸 Screenshots
 
-  <img src="https://github.com/user-attachments/assets/b6dc8d06-cc0f-4bf8-8d3a-43faa37573a2"  width="300" height="400"/>
-  <img src="https://github.com/user-attachments/assets/23ae105b-a4f3-4176-bb44-fc90fa67e98b"  width="300" height="400"/>
+
+
   
-  
-
-![photo_2025-07-22_12-21-04](https://github.com/user-attachments/assets/a1c6f406-0d84-4321-b9e9-336e98576eb7)
-![photo_2025-07-22_12-21-01](https://github.com/user-attachments/assets/98b1ee3e-29d2-4745-a0be-08d3973cbbdb)
-![photo_2025-07-22_12-20-58](https://github.com/user-attachments/assets/50c3ad6f-eb7b-45f6-b1ad-7e7d3859d96e)
-![photo_2025-07-22_12-20-56](https://github.com/user-attachments/assets/b638ddaa-47ca-4909-b0c5-af18912ad4f4)
-![photo_2025-07-22_12-20-55](https://github.com/user-attachments/assets/896f2446-ad01-430d-8476-5a3b518bf726)
-![photo_2025-07-22_12-20-55 (2)](https://github.com/user-attachments/assets/88483d66-445c-40f1-a295-035f245e62c6)
-![photo_2025-07-22_12-20-53](https://github.com/user-attachments/assets/9ca679ab-07fc-4418-85ab-1f84e513ad32)
-![photo_2025-07-22_12-20-50](https://github.com/user-attachments/assets/7a3d6145-a13e-48fa-87ec-dd4ba6ebae4a)
-![photo_2025-07-22_12-20-49](https://github.com/user-attachments/assets/3e757fa5-99f0-44ef-899b-a869bb54d549)
-![photo_2025-07-22_12-20-48](https://github.com/user-attachments/assets/1f70aca3-d13d-4e36-9ff6-c277c672db0b)
-![photo_2025-07-22_12-20-47](https://github.com/user-attachments/assets/51eefa37-8efe-400a-bc8b-d22e5dc3cdad)
-![photo_2025-07-22_12-20-46](https://github.com/user-attachments/assets/8fd2e8bc-1b5b-4e12-867b-521ef56f67f2)
-![photo_2025-07-22_12-20-45](https://github.com/user-attachments/assets/cfbaa245-f6b9-430e-8b55-361b81982b06)
-![photo_2025-07-22_12-20-44](https://github.com/user-attachments/assets/66b65d90-359c-4d27-a215-2dfa6f558b07)
-![photo_2025-07-22_12-20-43](https://github.com/user-attachments/assets/de17d8c4-d1fd-4e11-afc9-76ff92837ae9)
-
-![photo_2025-07-22_12-21-12](https://github.com/user-attachments/assets/61168293-8d24-4dbc-b398-552d3d5916bb)
-![photo_2025-07-22_12-21-10](https://github.com/user-attachments/assets/8e2e5f91-19ce-4a37-805e-25754bb3c74e)
 
 
+![photo_2025-07-22_12-20-35](https://github.com/user-attachments/assets/5da9c532-d530-4aed-a9ba-f62925ec4c66)
+![photo_2025-07-22_12-21-12](https://github.com/user-attachments/assets/1395d364-8614-47a9-846f-d85e80c43c2d)
+![photo_2025-07-22_12-21-10](https://github.com/user-attachments/assets/235db078-7053-42aa-b4ba-4970416c04bf)
+![photo_2025-07-22_12-21-04](https://github.com/user-attachments/assets/f37599c9-c329-43e5-a35a-7998f00a9244)
+![photo_2025-07-22_12-21-01](https://github.com/user-attachments/assets/1869f521-fa03-42c0-97ca-be746ca03ded)
+![photo_2025-07-22_12-20-58](https://github.com/user-attachments/assets/00f3226b-632e-490f-842d-3e70294ee9db)
+![photo_2025-07-22_12-20-56](https://github.com/user-attachments/assets/0a7496ca-5756-447f-8683-92245056e2de)
+![photo_2025-07-22_12-20-55](https://github.com/user-attachments/assets/c96e3403-f315-4ff4-a9a8-dcd485afc0b8)
+![photo_2025-07-22_12-20-55 (2)](https://github.com/user-attachments/assets/626c3cad-2db3-4c37-bc8f-a6ccebd096a9)
+![photo_2025-07-22_12-20-53](https://github.com/user-attachments/assets/a03ae64b-ecea-4f45-8479-baf601a6ffec)
+![photo_2025-07-22_12-20-50](https://github.com/user-attachments/assets/1aa6a675-b451-4236-a48d-1b1fcf8d10ae)
+![photo_2025-07-22_12-20-49](https://github.com/user-attachments/assets/3b6c6f44-79ec-4932-92d0-832afd2fa9ef)
+![photo_2025-07-22_12-20-48](https://github.com/user-attachments/assets/5d8d1cca-f8b9-4c9f-abfd-5f2889d6ced5)
+![photo_2025-07-22_12-20-47](https://github.com/user-attachments/assets/4a1a9769-e8f7-4fd8-94f8-acd0791e148b)
+![photo_2025-07-22_12-20-46](https://github.com/user-attachments/assets/7d10d15b-dee8-48ec-836f-090fa791d18c)
+![photo_2025-07-22_12-20-45](https://github.com/user-attachments/assets/bd74a482-419f-4b77-b347-816a6f1998b1)
+![photo_2025-07-22_12-20-44](https://github.com/user-attachments/assets/d7ea77fd-839c-41d7-bfee-edbe349e1e05)
+![photo_2025-07-22_12-20-43](https://github.com/user-attachments/assets/bd284e2b-8c24-47ec-9fda-58d08fd0f504)
+![photo_2025-07-22_12-20-39](https://github.com/user-attachments/assets/4609845f-def0-4532-a174-2116fca5045e)
  
 
  
