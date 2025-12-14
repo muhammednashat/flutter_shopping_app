@@ -169,7 +169,8 @@ class _DisplayProdcutState extends ConsumerState<DisplayProdcut> {
     final result = await _cartRepo.insertItemIntoCart(item);
     if (result) {
       showToast("A New item has added to your cart");
-      context.pop(Routes.checkOut);
+      ref.invalidate(fetchCartItemsProvider);
+      Navigator.pop(context);
     } else {
       showToast("A New item cann't add to your cart");
     }

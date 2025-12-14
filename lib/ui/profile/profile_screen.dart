@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shopping_app/config/dependences.dart';
+import 'package:shopping_app/myapp.dart';
 import 'package:shopping_app/routing/routes.dart';
 import 'package:shopping_app/ui/core/colors/light_color.dart';
 import 'package:shopping_app/utils/util.dart';
+import 'package:shopping_app/utils/utils.dart';
 
 class ProfileScreen extends ConsumerStatefulWidget {
   const ProfileScreen({super.key});
@@ -16,6 +18,7 @@ class ProfileScreen extends ConsumerStatefulWidget {
 class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
+    myPrint("Prog--------------------");
     final userAsync = ref.watch(userBoxCollictionProvider);
     if (userAsync is AsyncLoading) {
       return Center(child: CircularProgressIndicator());
@@ -41,7 +44,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
               subtitle: Text(userAsync.value!.email),
               leading: CircleAvatar(
                 radius: 45,
-                backgroundImage: AssetImage(getImagePath("image.jpeg"), ),
+                backgroundImage: AssetImage(getImagePath("image.jpeg")),
               ),
             ),
             SizedBox(height: 24.0),

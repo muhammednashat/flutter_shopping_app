@@ -18,9 +18,8 @@ class BagScreen extends ConsumerStatefulWidget {
 class _BagScreenState extends ConsumerState<BagScreen> {
   @override
   Widget build(BuildContext context) {
-    final cartResponse = ref.watch(
-      fetchCartItemsProvider,
-    );
+    
+    final cartResponse = ref.watch(fetchCartItemsProvider);
 
     return Scaffold(
       appBar: AppBar(title: Text('Bag')),
@@ -52,7 +51,7 @@ class _BagScreenState extends ConsumerState<BagScreen> {
                     ),
                   ),
 
-            AsyncError(:final error) => Center(child: Text(error.toString())),
+            AsyncError(:final error) => Center(child: Text("error.toString()")),
             _ => Center(child: CircularProgressIndicator()),
           },
         ),

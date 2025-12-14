@@ -78,7 +78,7 @@ class _ItemCardState extends State<ItemCard> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
-                        '${_item.salePrice}\$',
+                        '${_item.salePrice.toStringAsFixed(2)}\$',
                         style: Theme.of(
                           context,
                         ).textTheme.titleMedium?.copyWith(fontSize: 20.0),

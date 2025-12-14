@@ -74,7 +74,8 @@ class _CheckOutState extends ConsumerState<CheckOut> {
     final user = await ref.read(userProvider);
     myPrint("usr id is  => ${user.id}");
     await orderRepo.submitOrder(user.id);
-    context.push(Routes.successScreen);
+    ref.invalidate(fetchCartItemsProvider);
+    context.go(Routes.successScreen);
   }
 }
 
