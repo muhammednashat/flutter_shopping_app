@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shopping_app/config/dependences.dart';
-import 'package:shopping_app/myapp.dart';
 import 'package:shopping_app/routing/routes.dart';
 import 'package:shopping_app/ui/core/colors/light_color.dart';
 import 'package:shopping_app/utils/util.dart';
@@ -25,7 +25,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     }
 
     if (userAsync is AsyncError) {
-      return Center(child: Text('Error loading user'));
+      return Center(child: Text('Error loading user ${userAsync.error}'));
     }
     return Scaffold(
       appBar: AppBar(title: Text('My Profile')),
@@ -44,14 +44,25 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
               subtitle: Text(userAsync.value!.email),
               leading: CircleAvatar(
                 radius: 45,
-                backgroundImage: AssetImage(getImagePath("image.jpeg")),
+                child:
+                    (userAsync.value!.imgUrl.isNotEmpty)
+                        ? Image.network(userAsync.value!.imgUrl)
+                        : Image.asset(
+                          getIconPath("user_icon.png"),
+                          fit: BoxFit.cover,
+                        ),
+                // backgroundImage:
+                //     (userAsync.value!.imgUrl.isNotEmpty)
+                //         ? NetworkImage(userAsync.value!.imgUrl)
+                //         : AssetImage(getIconPath("user_icon.png"), ),
               ),
             ),
             SizedBox(height: 24.0),
             ItemRow(
               title: "Shipping addresses",
               subTitle: "3 addresses",
-              distination: "distination",
+              distination:Routes.shippingAddress,
+              extra: userAsync.value!.id,
             ),
             ItemRow(
               title: "Payment methodes",
@@ -88,7 +99,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   }
 
   _navitateToSettingsScreen() async {
-    final user = await ref.read(userBoxCollictionProvider);
+    final user = await ref.read(userProvider);
     context.push(Routes.settings, extra: user);
   }
 }
@@ -97,18 +108,19 @@ class ItemRow extends StatelessWidget {
   final String title;
   final String subTitle;
   final String distination;
+  final Object? extra;
   const ItemRow({
     super.key,
     required this.title,
     required this.subTitle,
-    required this.distination,
+    required this.distination, this.extra,
   });
-
+  
   @override
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {
-        context.push(distination);
+        context.push(distination,extra: extra);
       },
       title: Text(title, style: Theme.of(context).textTheme.titleMedium),
       subtitle: Text(subTitle),

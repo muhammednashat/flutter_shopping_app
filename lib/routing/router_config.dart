@@ -18,6 +18,7 @@ import 'package:shopping_app/ui/payment/success_screen.dart';
 import 'package:shopping_app/ui/profile/change_password.dart';
 import 'package:shopping_app/ui/profile/change_personal_info.dart';
 import 'package:shopping_app/ui/profile/settings_screen.dart';
+import 'package:shopping_app/ui/shipping_address/shipping_address_screen.dart';
 import 'package:shopping_app/ui/shop/display_categories_products.dart';
 
 final routerConfig = _buildRouter();
@@ -49,6 +50,13 @@ GoRouter _buildRouter() {
         builder: (context, state) {
           final user = state.extra as User;
           return SettingsScreen(user: user);
+        },
+      ),
+       GoRoute(
+        path: Routes.shippingAddress,
+        builder: (context, state) {
+          final userId = state.extra as String;
+          return ShippingAdressScreen(userId: userId,);
         },
       ),
       GoRoute(

@@ -14,7 +14,7 @@ class Routes {
   static const String settings = '/settings'; 
   static const String changePersonalInfo = '/changePersonalInfo'; 
   static const String changePassword = '/changePassword'; 
-
+  static const String shippingAddress = '/shippingAddress';
 
   
 

@@ -15,11 +15,13 @@ class User {
   String address;
   @HiveField(4)
   String id;
+  @HiveField(5)
+  String imgUrl;
 
   User({
     required this.name,
     required this.email,
-
+required this.imgUrl,
     required this.phone,
     required this.address,
     required this.id,
@@ -31,7 +33,8 @@ class User {
         "email": email,
         "phone": phone,
         "address": address,
-        "id":id
+        "id":id,
+        "imgUrl":imgUrl,
       };
 
   factory User.fromJson(Map<String, dynamic> json) => User(
@@ -40,6 +43,7 @@ class User {
         phone: json['phone'] as String,
         address: json['address'] as String,
         id: json['_id'] as String,
+        imgUrl: json["imgUrl"] as String ?? "",
 
       );
 
@@ -47,7 +51,7 @@ class User {
 
  @override
 String toString() {
-  return 'User{id: $id,name: $name, email: $email, phone: $phone, address: $address}';
+  return 'User{id: $id,name: $name, email: $email, phone: $phone, address: $address, imgUrl: $imgUrl}';
 }
 }
 
@@ -63,6 +67,7 @@ class UserAdapter extends TypeAdapter<User> {
       phone: reader.readString(),
       address: reader.readString(),
       id: reader.readString(),
+      imgUrl: reader.readString(),
 
     );
   }
@@ -74,6 +79,7 @@ class UserAdapter extends TypeAdapter<User> {
     writer.writeString(obj.phone);
     writer.writeString(obj.address);
     writer.writeString(obj.id); 
+    writer.writeString(obj.imgUrl); 
 
   }
 }
