@@ -1,3 +1,4 @@
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
@@ -10,11 +11,13 @@ import 'package:shopping_app/data/repositories/cart_repo.dart';
 import 'package:shopping_app/data/repositories/category_repo.dart';
 import 'package:shopping_app/data/repositories/ordersRepo.dart';
 import 'package:shopping_app/data/repositories/product_repo.dart';
+import 'package:shopping_app/data/repositories/user_repo.dart';
 import 'package:shopping_app/data/services/api/authService.dart';
 import 'package:shopping_app/data/services/api/cart_service.dart';
 import 'package:shopping_app/data/services/api/ordersService.dart';
 import 'package:shopping_app/data/services/api/products_service.dart';
 import 'package:shopping_app/data/services/api/category_service.dart';
+import 'package:shopping_app/data/services/api/user_service.dart';
 import 'package:shopping_app/utils/utils.dart';
 
 final boxCollectionProvider = FutureProvider<BoxCollection>((ref) async {
@@ -50,6 +53,8 @@ final productServiceProvider = Provider((ref) => ProductService());
 final categoryServiceProvider = Provider((ref) => CategoryService());
 final cartServiceProvider = Provider((ref) => CartService());
 final orderServiceProvider = Provider((ref) => OrdersService());
+final userProfileService = Provider((ref)=> UserService());
+
 
 // Repos
 
@@ -78,6 +83,15 @@ final ordersRepoProvider = Provider((ref) {
   final ordersService = ref.watch(orderServiceProvider);
   return OrdersRepo(ordersService: ordersService);
 });
+
+final userProfileRepo = Provider((ref){
+
+final service = ref.watch(userProfileService);
+
+return UserRepo(service: service);
+});
+
+
 
 // Future Apis
 final saleProductsProvider = FutureProvider((ref) {

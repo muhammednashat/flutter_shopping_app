@@ -99,6 +99,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   }
 
   _navitateToSettingsScreen() async {
+    
     final user = await ref.read(userProvider);
     context.push(Routes.settings, extra: user);
   }
